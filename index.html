@@ -1,23 +1,124 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Two Textboxes</title>
-  </head>
-  <body>
-    <label for="textbox1">Textbox 1:</label>
-    <input type="text" id="textbox1" name="textbox1"><br><br>
-    <label for="textbox2">Textbox 2:</label>
-    <input type="text" id="textbox2" name="textbox2"><br><br>
-    <button onclick="combineText()">Combine Text</button>
-    <p id="combinedText"></p>
-    <script>
-      function combineText() {
-        var textbox1Value = document.getElementById("textbox1").value;
-        var textbox2Value = document.getElementById("textbox2").value;
-        var textbox1Parts = textbox1Value.split("@");
-        var combinedText = textbox1Parts[0] + "_at_" + textbox1Parts[1] + "_" + textbox2Value;
-        document.getElementById("combinedText").innerHTML = combinedText;
-      }
-    </script>
-  </body>
+    <head>
+        <title>Duck Address Send Generator</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-color: #f2f2f2;
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+            label {
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                display: block;
+            }
+            input[type="text"] {
+                padding: 10px;
+                border-radius: 5px;
+                border: none;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                font-size: 16px;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 18px;
+                margin-top: 20px;
+            }
+            button:hover {
+                background-color: #3e8e41;
+            }
+            h1 {
+                font-size: 36px;
+                color: #df5734;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            h3 {
+                font-size: 18px;
+                color: #333;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            #combinedText {
+                font-size: 20px;
+                font-weight: bold;
+                color: #333;
+                margin-top: 20px;
+                text-align: center;
+            }
+            .container {
+                max-width: 500px;
+                margin: 0 auto;
+                background-color: #fff;
+                border-radius: 10px;
+                padding: 30px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            footer {
+                margin-top: 50px;
+                text-align: center;
+                font-size: 14px;
+                color: #999;
+            }
+            footer a {
+                color: #999;
+                text-decoration: none;
+            }
+            footer a:hover {
+                color: #333;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Duck Address Sending Generator 🦆</h1>
+            <h3>Did you know that you can send FROM duck addresses? All you have to do is put in the info and then send the email from your PERSONAL address to the special created one!</h3>
+
+            <div style="display: flex; flex-direction: column;">
+                <label for="textbox1">Address to send TO:</label>
+                <input type="text" id="textbox1" name="textbox1" placeholder="john@example.com">
+                <label for="textbox2">Address to send FROM:</label>
+                <input type="text" id="textbox2" name="textbox2" placeholder="tim@duck.com">
+                <button onclick="combineText()">Create Address!</button>
+                <p id="combinedText"></p>
+            </div>
+        </div>
+        <script>
+            function combineText() {
+                var textbox1Value = document.getElementById("textbox1").value;
+                var textbox2Value = document.getElementById("textbox2").value;
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                var duckEmailRegex = /^[^\s@]+@duck\.com$/;
+
+                if (!emailRegex.test(textbox1Value)) {
+                    alert("Please enter a valid email address");
+                    return false;
+                }
+                if (!duckEmailRegex.test(textbox2Value)){
+                    alert("Please enter a valid duck address");
+                    return false;
+                }
+                var textbox1Parts = textbox1Value.split("@");
+                var combinedText = textbox1Parts[0] + "_at_" + textbox1Parts[1] + "_" + textbox2Value;
+                document.getElementById("combinedText").innerHTML = combinedText;
+            }
+        </script>
+        <footer>
+            <p>Made with 💖 by <a href="https://github.com/TheCodingHamster">TheCodingHamster</a></p>
+            <button onclick="window.location.href='https://github.com/TheCodingHamster/duck-address-sender'" style="border-radius: 55px; background-color: #ff4d4d;">HELP!</button>
+            </footer>
+    </body>
 </html>
