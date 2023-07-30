@@ -17,10 +17,13 @@
                 <label for="textbox2">Address to send FROM:</label>
                 <input type="email" id="textbox2" name="textbox2" placeholder="tim@duck.com">
                 <button onclick="combineText()">Create Address!</button>
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                    <p id="combinedText" style="font-size: 24px; font-weight: bold; color: #333; margin-top: 20px; text-align: center;"></p>
-                    <button id="copyButton" onclick="copyToClipboard()" style="margin-top: 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; text-align: center;">Copy!</button>
-                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: center;" hidden>
+                <p id="combinedText" style="font-size: 24px; font-weight: bold; color: #333; margin-top: 20px; text-align: center;"></p>
+                <button id="copyButton" onclick="copyToClipboard()" style="margin-top: 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; text-align: center;" hidden>Copy to clipboard</button>
+                <button id="mailButton" onclick="sendEmail()" style="margin-top: 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; text-align: center;" hidden>Open in Mail</button>
+            </div>
 
         </div>
         <script>
@@ -41,7 +44,8 @@
                 var textbox1Parts = textbox1Value.split("@");
                 var combinedText = textbox1Parts[0] + "_at_" + textbox1Parts[1] + "_" + textbox2Value;
                 document.getElementById("combinedText").innerHTML = combinedText;
-                copyButton.setVisible(true); 
+                document.getElementById("copyButton").removeAttribute("hidden");
+                document.getElementById("mailButton").removeAttribute("hidden");
             }
 
             function copyToClipboard() {
@@ -54,10 +58,16 @@
                 window.getSelection().removeAllRanges();
                 alert("Copied to clipboard!");
             }
+
+            function sendEmail() {
+                const combinedText = document.getElementById("combinedText").textContent;
+                const mailtoLink = `mailto:${combinedText}`;
+                window.location.href = mailtoLink;
+            }
         </script>
         <footer>
             <button onclick="window.location.href='./help.html'" style="border-radius: 55px; background-color: #ff4d4d;">HELP!</button>
             <p>Made with 💖 by <a href="https://github.com/Hamster45105">Hamster45105</a></p>
-            </footer>
+        </footer>
     </body>
 </html>
