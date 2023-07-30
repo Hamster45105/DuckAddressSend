@@ -15,9 +15,21 @@
                 <label for="textbox1">Address to send TO:</label>
                 <input type="email" id="textbox1" name="textbox1" placeholder="john@example.com">
                 <label for="textbox2">Address to send FROM:</label>
-                <input type="email" id="textbox2" name="textbox2" placeholder="tim@duck.com">
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                    <input type="email" id="textbox2" name="textbox2" placeholder="tim@duck.com">
+                    <button style="background-color: #ccc; border: none; width: 30px; height: 30px; margin-left: 5px;" onclick="openPopup()"></button>
+
+                    <div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 999;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 5px;">
+                            <h2>DDG Api Key:</h2>
+                            <input type="text" id="popupInput">
+                            <button onclick="closePopup()">OK</button>
+                        </div>
+                    </div>
+
+                    </div>                
                 <button onclick="combineText()">Create Address!</button>
-            </div>
+                
 
             <div style="display: flex; flex-direction: column; align-items: center;" hidden>
                 <p id="combinedText" style="font-size: 24px; font-weight: bold; color: #333; margin-top: 20px; text-align: center;"></p>
@@ -64,6 +76,51 @@
                 const mailtoLink = `mailto:${combinedText}`;
                 window.location.href = mailtoLink;
             }
+
+            function openPopup() {
+                document.getElementById("popup").style.display = "block";
+            }
+
+            async function closePopup() {
+                const popupInput = document.getElementById("popupInput").value;
+
+                if (popupInput == null || popupInput === "") {
+                    throw "Invalid DuckDuckGo API token.";
+                }
+
+                const requestInit = {
+                    redirect: "manual",
+                    cache: "no-store",
+                    method: "POST",
+                    headers: new Headers({
+                    Authorization: "Bearer " + popupInput,
+                    "Content-Type": "application/json",
+                    }),
+                };
+
+                const url = "https://quack.duckduckgo.com/api/email/addresses";
+                const request = new Request(url, requestInit);
+
+                try {
+                    const response = await fetch(request);
+
+                    if (response.status === 200 || response.status === 201) {
+                    const json = await response.json();
+                    if (json.address) {
+                        alert(`${json.address}@duck.com`);
+                        document.getElementById("textbox2").value = "happy";
+                        document.getElementById("popup").style.display = "none";
+                    }
+                    } else if (response.status === 401) {
+                    throw "Invalid DuckDuckGo API token.";
+                    } else {
+                    throw "Unknown DuckDuckGo error occurred.";
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+                }
+
         </script>
         <footer>
             <button onclick="window.location.href='./help.html'" style="border-radius: 55px; background-color: #ff4d4d;">HELP!</button>
