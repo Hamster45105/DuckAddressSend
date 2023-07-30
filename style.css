@@ -1,0 +1,75 @@
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: block;
+}
+input[type="email"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+button:hover {
+    background-color: #3e8e41;
+}
+h1 {
+    font-size: 36px;
+    color: #df5734;
+    margin-bottom: 20px;
+    text-align: center;
+}
+h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+#combinedText {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+}
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+footer {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+}
+footer a {
+    color: #999;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #333;
+}
