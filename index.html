@@ -93,8 +93,11 @@
                 <label for="textbox2">Address to send FROM:</label>
                 <input type="email" id="textbox2" name="textbox2" placeholder="tim@duck.com">
                 <button onclick="combineText()">Create Address!</button>
-                <p id="combinedText"></p>
-            </div>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <p id="combinedText" style="font-size: 24px; font-weight: bold; color: #333; margin-top: 20px; text-align: center;"></p>
+                    <button id="copyButton" onclick="copyToClipboard()" style="margin-top: 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; text-align: center;">Copy!</button>
+                </div>
+
         </div>
         <script>
             function combineText() {
@@ -114,6 +117,18 @@
                 var textbox1Parts = textbox1Value.split("@");
                 var combinedText = textbox1Parts[0] + "_at_" + textbox1Parts[1] + "_" + textbox2Value;
                 document.getElementById("combinedText").innerHTML = combinedText;
+                copyButton.setVisible(true); 
+            }
+
+            function copyToClipboard() {
+                var combinedText = document.getElementById("combinedText");
+                var range = document.createRange();
+                range.selectNode(combinedText);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();
+                alert("Copied to clipboard!");
             }
         </script>
         <footer>
