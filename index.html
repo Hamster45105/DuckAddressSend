@@ -82,45 +82,27 @@
             }
 
             async function closePopup() {
-                const popupInput = document.getElementById("popupInput").value;
+                const apiKey = document.getElementById("popupInput").value;
+                const emailAddresses = await postEmailAddresses(apiKey);
+                console.log(emailAddresses);
+                document.getElementById("popup").style.display = "none";
+            }
 
-                if (popupInput == null || popupInput === "") {
-                    throw "Invalid DuckDuckGo API token.";
-                }
-
-                const requestInit = {
-                    redirect: "manual",
-                    cache: "no-store",
-                    method: "POST",
-                    headers: new Headers({
-                    Authorization: "Bearer " + popupInput,
-                    "Content-Type": "application/json",
-                    }),
-                };
-
+            async function postEmailAddresses(apiKey) {
                 const url = "https://quack.duckduckgo.com/api/email/addresses";
-                const request = new Request(url, requestInit);
-
-                try {
-                    const response = await fetch(request);
-
-                    if (response.status === 200 || response.status === 201) {
-                    const json = await response.json();
-                    if (json.address) {
-                        alert(`${json.address}@duck.com`);
-                        document.getElementById("textbox2").value = "happy";
-                        document.getElementById("popup").style.display = "none";
-                    }
-                    } else if (response.status === 401) {
-                    throw "Invalid DuckDuckGo API token.";
-                    } else {
-                    throw "Unknown DuckDuckGo error occurred.";
-                    }
-                } catch (error) {
-                    console.error(error);
-                }
-                }
-
+                const requestInit = {
+                    method: "POST",
+                    cache: "no-store",
+                    redirect: "manual",
+                    headers: {
+                    Authorization: `Bearer ${apiKey}`,
+                    "Content-Type": "application/json",
+                    },
+                };
+                const response = await fetch(url, requestInit);
+                const json = await response.json();
+                return json;
+            }
         </script>
         <footer>
             <button onclick="window.location.href='./help.html'" style="border-radius: 55px; background-color: #ff4d4d;">HELP!</button>
