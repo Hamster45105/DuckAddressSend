@@ -107,6 +107,10 @@
                 };
                 const corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/" + url;
                 const response = await fetch(corsAnywhereUrl, requestInit);
+                if (response.status === 401) {
+                    alert("Invalid DuckDuckGo API Key!");
+                    return null;
+                }
                 const json = await response.json();
                 return json;
             }
