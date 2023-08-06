@@ -14,7 +14,8 @@
   
   <nav>
     <ul>
-      <li><a href="#getting-started">Getting Started</a></li>
+      <li><a href="#getting-started">Basic Operations</a></li>
+      <li><a href="#functions">Extra Functions</a></li>
       <li><a href="#error">Errors</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -22,18 +23,26 @@
   
   <main>
     <section id="getting-started">
-      <h2>Getting Started</h2>
+      <h2>Basic Operations</h2>
       <ol>
         <li>Make sure you have a DuckDuckGo (DDG) email account (go to <a href="https://duckduckgo.com/email">https://duckduckgo.com/email</a> to check)</li>
-        <li>Generate a private duck address (random characters) on <a href="https://duckduckgo.com/email">https://duckduckgo.com/email</a> page OR use your personal duck address (the one you have chosen).</li>
         <li>Go to <a href="https://thecodinghamster.github.io/DuckAddressSend/">https://hamster45105.github.io/DuckAddressSend/</a></li>
         <li>Input the email address that you want to send an email TO.</li>
         <li>Input either a private or your personal duck address address that you want to send your email FROM.</li>
         <li>Click "Create Address!"</li>
         <li>Your address will be displayed underneath button.</li>
-        <li>You can also copy to clipboard</li>
+        <li>Now, just send the email from your own email address (eg. @gmail.com) to that special created email address.</li>
     </ol>
-    <p><strong>NOTE:</strong> You must put in valid addresses otherwise you will get an error!</p>
+    </section>
+    
+    <section id="functions">
+      <h2>Functions</h2>
+      <h3>Copy to Clipboard</h3>
+      <p>This copies the created address to your clipboard. An alert will be displayed to confirm that it worked</p>
+      <h3>Open in Mail</h3>
+      <p>Open the compose in your default email application with the special address already filled in</p>
+      <h3>🔄 (Generate Address)</h3>
+      <p>Generate a new private duck address. When clicked a popup box will appear. In the textbox enter your DuckDuckGo API key and click "OK". The generated address will be automtically filled in. Your API key is saved locally in your browser for next time you use the website</p> 
     </section>
     
     <section id="error">
@@ -41,6 +50,9 @@
       <p><strong>Please enter a valid duck address</strong>: All valid duck addresses end in @duck.com, so please do one that ends in that.</p>
       
       <p><strong>Please enter a valid email address</strong>: Pretty self-explantory, just enter a proper address</p>
+    </section>
+    
+    <p><strong>Invalid DuckDuckGo API Key!</strong>: This means that the API key that you inputted is not valid. Double check to make sure that you have put the right one in. They are case-sensitive.</p>
     </section>
     
     <section id="faq">
@@ -51,9 +63,9 @@
           <p>The GitHub repo for this project is located at: <a href="https://github.com/Hamster45105/DuckAddressSend">this address</a> </p>
         </div>
         
-        <button class="accordion-btn">Can I generate Duck Address right in the web app, like with Bitwarden?</button>
+        <button class="accordion-btn">How do I get my DDG API Key?</button>
         <div class="accordion-content">
-        <p>Yes! You just need to follow: <a href="https://www.reddit.com/r/Bitwarden/comments/y3hvph/where_to_find_the_duckduckgo_api_key_for/is9ayej/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button">these instructions</a> to get your API key.</p>
+        <p>You just need to follow: <a href="https://www.reddit.com/r/Bitwarden/comments/y3hvph/where_to_find_the_duckduckgo_api_key_for/is9ayej/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button">these instructions</a> to get your API key (Read the text in the comment).</p>
         
         <!-- Add more accordion items as needed -->
       </div>
