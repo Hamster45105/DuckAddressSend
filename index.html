@@ -15,9 +15,23 @@
                 <label for="textbox1">Address to send TO:</label>
                 <input type="email" id="textbox1" name="textbox1" placeholder="john@example.com" autocomplete="off">
                 <label for="textbox2">Address to send FROM:</label>
-                <input type="email" id="textbox2" name="textbox2" placeholder="tim@duck.com" autocomplete="off">
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                    <div style="display: flex; flex-direction: row; align-items: center; flex: 1; justify-content: flex-end;">
+                        <input type="email" id="textbox2" name="textbox2" placeholder="tim@duck.com" style="flex-grow: 1;">
+                        <button onclick="openPopup()" style="margin-left: 10px; padding: 5px 10px;">🔃</button>
+                    </div>
+                    
+                    <div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 999;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 5px;">
+                            <h2>DDG Api Key:</h2>
+                            <input type="text" id="popupInput">
+                            <button onclick="closePopup()">OK</button>
+                        </div>
+                    </div>
+
+                    </div>                
                 <button onclick="combineText()">Create Address!</button>
-            </div>
+                
 
             <div style="display: flex; flex-direction: column; align-items: center;" hidden>
                 <p id="combinedText" style="font-size: 24px; font-weight: bold; color: #333; margin-top: 20px; text-align: center;"></p>
@@ -65,6 +79,36 @@
                 const combinedText = document.getElementById("combinedText").textContent;
                 const mailtoLink = `mailto:${combinedText}`;
                 window.location.href = mailtoLink;
+            }
+
+            function openPopup() {
+                document.getElementById("popup").style.display = "block";
+            }
+
+            async function closePopup() {
+                const apiKey = document.getElementById("popupInput").value;
+                const emailAddresses = await postEmailAddresses(apiKey);
+                console.log(emailAddresses);
+                const duckAddress = emailAddresses.address + "@duck.com";
+                document.getElementById("textbox2").value = duckAddress;
+                document.getElementById("popup").style.display = "none";
+            }
+
+            async function postEmailAddresses(apiKey) {
+                const url = "https://quack.duckduckgo.com/api/email/addresses";
+                const requestInit = {
+                    method: "POST",
+                    cache: "no-store",
+                    redirect: "manual",
+                    headers: {
+                    Authorization: `Bearer ${apiKey}`,
+                    "Content-Type": "application/json",
+                    },
+                };
+                const corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/" + url;
+                const response = await fetch(corsAnywhereUrl, requestInit);
+                const json = await response.json();
+                return json;
             }
         </script>
         <footer>
