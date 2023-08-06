@@ -71,6 +71,24 @@ section {
   transition: max-height 0.3s ease;
 }
 
+.accordion-btn.active {
+  background-color: #005ea2;
+}
+
+.back-btn {
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background-color: #005ea2;
+}
+
 footer {
   background-color: #333;
   color: #fff;
