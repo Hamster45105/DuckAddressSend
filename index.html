@@ -85,6 +85,8 @@
                 const apiKey = document.getElementById("popupInput").value;
                 const emailAddresses = await postEmailAddresses(apiKey);
                 console.log(emailAddresses);
+                const duckAddress = emailAddresses.address + "@duck.com";
+                document.getElementById("textbox2").value = duckAddress;
                 document.getElementById("popup").style.display = "none";
             }
 
@@ -99,7 +101,8 @@
                     "Content-Type": "application/json",
                     },
                 };
-                const response = await fetch(url, requestInit);
+                const corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/" + url;
+                const response = await fetch(corsAnywhereUrl, requestInit);
                 const json = await response.json();
                 return json;
             }
