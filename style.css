@@ -20,6 +20,15 @@ input[type="email"] {
     margin-bottom: 20px;
     width: 100%;
 }
+input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    margin: 0 auto 20px;
+    display: block;
+}
 button {
     background-color: #4CAF50;
     color: white;
