@@ -85,6 +85,7 @@
             }
 
             function openPopup() {
+                document.getElementById("popupInput").value = localStorage.getItem("apiKey");
                 document.getElementById("popup").style.display = "block";
             }
 
@@ -94,6 +95,7 @@
                 console.log(emailAddresses);
                 const duckAddress = emailAddresses.address + "@duck.com";
                 document.getElementById("textbox2").value = duckAddress;
+                localStorage.setItem("apiKey", apiKey);
                 document.getElementById("popup").style.display = "none";
             }
 
