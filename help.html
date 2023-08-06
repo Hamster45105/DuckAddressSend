@@ -1,44 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duck Address Sender</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px; /* added padding */
-        }
-        h1 {
-            text-align: center;
-            margin-top: 50px;
-        }
-        h2 {
-            margin-top: 50px; /* increased margin */
-            margin-bottom: 30px; /* added margin */
-        }
-        ol {
-            margin-top: 20px;
-            margin-left: 50px;
-        }
-        p {
-            margin-top: 20px;
-            margin-left: 50px;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/help_style.css">
+  <title>Help</title>
 </head>
 <body>
-    <h1>Duck Address Sender</h1>
-    <h2>Steps for use</h2>
-    <ol>
+  <header>
+    <h1>Help Center</h1>
+    <h2>Find help for Duck Address Sending Generator here!</h2>
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="#getting-started">Getting Started</a></li>
+      <li><a href="#errors">Account</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <section id="getting-started">
+      <h2>Getting Started</h2>
+      <ol>
         <li>Make sure you have a DuckDuckGo (DDG) email account (go to <a href="https://duckduckgo.com/email">https://duckduckgo.com/email</a> to check)</li>
         <li>Generate a private duck address (random characters) on <a href="https://duckduckgo.com/email">https://duckduckgo.com/email</a> page OR use your personal duck address (the one you have chosen).</li>
         <li>Go to <a href="https://thecodinghamster.github.io/DuckAddressSend/">https://hamster45105.github.io/DuckAddressSend/</a></li>
@@ -49,6 +34,37 @@
         <li>You can also copy to clipboard</li>
     </ol>
     <p><strong>NOTE:</strong> You must put in valid addresses otherwise you will get an error!</p>
-        <button onclick="location.href='./index.html'">&lt;-- Back to home</button>
-    </body>
+    </section>
+    
+    <section id="error">
+      <h2>Errors</h2>
+      <p><strong>Please enter a valid duck address</strong>: All valid duck addresses end in @duck.com, so please do one that ends in that.</p>
+      
+      <p><strong>Please enter a valid email address</strong>: Pretty self-explantory, just enter a proper address</p>
+    </section>
+    
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="accordion">
+        <button class="accordion-btn">Where can I find the GitHub repo for this project?</button>
+        <div class="accordion-content">
+          <p>The GitHub repo for this project is located at: <a href="https://github.com/Hamster45105/DuckAddressSend">this address</a> </p>
+        </div>
+        
+        <button class="accordion-btn">Can I generate Duck Address right in the web app, like with Bitwarden?</button>
+        <div class="accordion-content">
+          <p>Not yet... coming soon</p>
+        </div>
+        
+        <!-- Add more accordion items as needed -->
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+      <p>Made with 💖 by <a href="https://github.com/Hamster45105">Hamster45105</a></p>
+  </footer>
+
+  <script src="help_scripts.js"></script>
+</body>
 </html>
