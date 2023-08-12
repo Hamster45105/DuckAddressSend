@@ -8,6 +8,7 @@
 [![Reported Bugs](https://img.shields.io/github/issues/Hamster45105/DuckAddressSend/bug?label=reported%20bugs&color=cc4453)](https://github.com/Hamster45105/DuckAddressSend/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 [![Current License](https://img.shields.io/github/license/Hamster45105/DuckAddressSend)](https://github.com/Hamster45105/DuckAddressSend/blob/main/LICENSE)
 [![Website Status](https://img.shields.io/website?up_message=online&down_message=offline&down_color=red&url=https%3A%2F%2Fhamster45105.github.io%2FDuckAddressSend%2F)](https://www.githubstatus.com/)
+[![GitHub Stars](https://img.shields.io/github/stars/Hamster45105/DuckAddressSend)](https://github.com/Hamster45105/DuckAddressSend/stargazers)
 
 
 
