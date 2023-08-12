@@ -21,5 +21,7 @@ All branches are under active development, for latest stable source code go to r
 ## License
 This repository is licenesed under the MIT License.
 
+TL;DR: The MIT License lets you use, tweak, and share software freely, but you need to give credit to the original creators by including the license when you use their stuff.
+
 ## Credits
 Favicon is sourced from [this repo](https://github.com/whatk233/ddg-email-panel/blob/main/public/favicon.ico)
