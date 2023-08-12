@@ -41,6 +41,9 @@
       <h3>Open in Mail</h3>
       <p>Open the compose in your default email application with the special address already filled in</p>
       <h3>🔄 (Generate Address)</h3>
+      <div style="background-color: #ffdddd; border: 1px solid #ff0000; color: #ff0000; padding: 10px;">
+  <strong>PLEASE NOTE:</strong> This feature is currently DISABLED. Check the FAQ for more info.
+      </div>
       <p>Generate a new private duck address. When clicked a popup box will appear. In the textbox enter your DuckDuckGo API key and click "OK". The generated address will be automtically filled in. Your API key is saved locally in your browser for next time you use the website</p> 
     </section>
     
@@ -64,6 +67,12 @@
         <button class="accordion-btn">How do I get my DDG API Key?</button>
         <div class="accordion-content">
         <p>You just need to follow: <a href="https://www.reddit.com/r/Bitwarden/comments/y3hvph/where_to_find_the_duckduckgo_api_key_for/is9ayej/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button">these instructions</a> to get your API key (Read the text in the comment).</p>
+        </div>
+        
+        <button class="accordion-btn">Why is the generate private Duck Address feature disabled?</button>
+        <div class="accordion-content">
+        <p>Unfortunately, when trying to contact the API directly in the script, a CORS error was coming back and there appeared to be no fix. That means that it has come down to using a CORS proxy service. Initially, the website was using the cors-anywhere.herokuapp.com, however this appears to be rate limited and it no longer works for requests from the website. A good alternative is cors.sh (same thing except more stable). The problem is that this is a paid service UNLESS your project is open sourced AND has at least 5 stars. Until the project can get 5 stars the feature is disabled. When 5 stars is reached, cors.sh will be implemented and the feature re-eneabled. So, to get this feature back up and running, please give the repo a star!</p>
+        </div>
         
         <!-- Add more accordion items as needed -->
       </div>
