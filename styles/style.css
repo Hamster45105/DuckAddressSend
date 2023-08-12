@@ -60,6 +60,12 @@ h1 {
     margin-bottom: 20px;
     text-align: center;
 }
+h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
 h3 {
     font-size: 18px;
     color: #333;
