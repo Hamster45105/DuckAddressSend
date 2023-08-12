@@ -8,10 +8,7 @@ jobs:
   check-stars:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Star Count
-        id: check_stars
-        run: echo "Checking star count"
-      
+
       - name: Get Star Count
         id: get_stars
         run: |
