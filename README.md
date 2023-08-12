@@ -20,6 +20,13 @@ This site is hosted using GitHub pages. As soon as a new release is published, i
 
 All branches are under active development, for latest stable source code go to releases.
 
+## Contributing
+To help with code, feel free to fork and crate a pull request.
+
+Found a bug? Open an issue with as much detail as possible.
+
+Just ❤️ the website? Give the repo a star 🌟!
+
 ## License
 This repository is licenesed under the MIT License.
 
