@@ -94,6 +94,9 @@ section {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.spaced-p {
+        margin-bottom: 10px;
+}
 
 footer {
   background-color: #333;
