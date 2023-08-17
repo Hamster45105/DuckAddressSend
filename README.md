@@ -10,7 +10,7 @@
 [![Website Status](https://img.shields.io/website?up_message=online&down_message=offline&down_color=red&url=https%3A%2F%2Fhamster45105.github.io%2FDuckAddressSend%2F)](https://www.githubstatus.com/)
 [![GitHub Stars](https://img.shields.io/github/stars/Hamster45105/DuckAddressSend)](https://github.com/Hamster45105/DuckAddressSend/stargazers)
 
-## Get the generate private Duck Address Feature back up and running! 
+## ⚠️ Get the generate private Duck Address Feature back up and running! ⚠️
 It would be great to re-enable this feature, however it can’t be done until this repo reached **5** stars! More info [here](https://github.com/Hamster45105/DuckAddressSend/issues/7#issuecomment-1681736743).
 
 ## About
