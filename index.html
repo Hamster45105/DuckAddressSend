@@ -42,6 +42,25 @@
                             <button onclick="document.getElementById('placeholder_popup').style.display = 'none';">Dismiss</button>
                         </div>
                     </div>
+
+                    <div id="errorPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 999;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 5px; text-align: center; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); animation: fade-in 0.5s ease-out;">
+                            <h2 style="color: #ff0000;">Error</h2>
+                            <p id="error-message" style="color: #ff0000;">Unfortunately, this feature is disabled until the repository for this website reaches 5 stars.</p>
+                            <button onclick="document.getElementById('errorPopup').style.display = 'none';" style="background-color: #ff0000; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Dismiss</button>
+                        </div>
+                    </div>
+
+                    <style>
+                        @keyframes fade-in {
+                            from {
+                                opacity: 0;
+                            }
+                            to {
+                                opacity: 1;
+                            }
+                        }
+                    </style>
                     
 
                     </div>                
@@ -65,11 +84,12 @@
                 var duckEmailRegex = /^[^\s@]+@duck\.com$/;
 
                 if (!emailRegex.test(textbox1Value)) {
-                    alert("Please enter a valid email address");
+                    openErrorPopup("Please enter a valid email address!");
                     return false;
                 }
+
                 if (!duckEmailRegex.test(textbox2Value)){
-                    alert("Please enter a valid duck address");
+                    openErrorPopup("Please enter a valid duck address!");
                     return false;
                 }
                 var textbox1Parts = textbox1Value.split("@");
@@ -101,6 +121,12 @@
                 document.getElementById("placeholder_popup").style.display = "block";
             }
 
+            function openErrorPopup(errorMessage) {
+                document.getElementById("error-message").innerHTML = errorMessage;
+                document.getElementById("errorPopup").style.display = "block";
+            }
+            
+
             async function closePopup() {
                 const apiKey = document.getElementById("popupInput").value;
                 const emailAddresses = await postEmailAddresses(apiKey);
@@ -124,7 +150,7 @@
                 const corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/" + url;
                 const response = await fetch(corsAnywhereUrl, requestInit);
                 if (response.status === 401) {
-                    alert("Invalid DuckDuckGo API Key!");
+                    openErrorPopup("Invalid DuckDuckGo API Key!");
                     return null;
                 }
                 const json = await response.json();
