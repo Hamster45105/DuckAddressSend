@@ -58,6 +58,7 @@ section {
   border: none;
   outline: none;
   transition: background-color 0.3s ease;
+  font-size: 16px;
 }
 
 .accordion-btn:hover {
@@ -73,6 +74,9 @@ section {
 
 .accordion-btn.active {
   background-color: #005ea2;
+  color: #fff;
+  background-color: #005ea2;
+  color: #fff;
 }
 
 .back-button {
