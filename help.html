@@ -16,6 +16,7 @@
       <li><a href="#getting-started">Basic Operations</a></li>
       <li><a href="#functions">Extra Functions</a></li>
       <li><a href="#error">Errors</a></li>
+      <li><a href="#terminology">Terms</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </nav>
@@ -26,11 +27,11 @@
       <ol>
         <li>Make sure you have a DuckDuckGo (DDG) email account (go to <a href="https://duckduckgo.com/email">https://duckduckgo.com/email</a> to check)</li>
         <li>Go to <a href="https://Hamster45105.github.io/DuckAddressSend/">https://hamster45105.github.io/DuckAddressSend/</a></li>
-        <li>Input the email address that you want to send an email TO</li>
+        <li>Input the email address that you want to send your email TO</li>
         <li>Input either a private or your personal duck address address that you want to send your email FROM</li>
         <li>Click "Create Address!"</li>
         <li>Your address will be displayed underneath button</li>
-        <li>Now, just send the email from your own email address (eg. @gmail.com) to that special created email address</li>
+        <li>Now, just send the email from your personal email (eg. @gmail.com) to that special created email address</li>
     </ol>
     </section>
     
@@ -56,6 +57,19 @@
     <p><strong>Invalid DuckDuckGo API key!</strong>: This means that the API key that you inputted is not valid. Double check to make sure that you have put the right one in. They are case-sensitive.</p>
     </section>
     
+    <section id="terminology">
+      <h2>Terms Used</h2>
+      <p>This is a list of the terms used on the website and on this help page as well as their meaning.</p> 
+      <h3>Personal Duck Address</h3>
+      <p>This is your permanent duck address that you created when you signed up. For example you might have chosen "john@duck.com".</p>
+      <h3>Private Duck Address</h3>
+      <p>This is a unique duck.com addresses that are automatically generated for you, it has a random string of characters. You can generate unlimited of them and they can be deactivated at any time. For example "abcd123@duck.com".</p>
+      <h3>Personal Email</h3>
+      <p>This is whatever your real email address is that is assigned to your duck addresses (the email address that emails sent to your duck addresses are forwared to) for example "john@gmail.com".</p>
+      <h3>Special Created Address</h3>
+      <p>When you use this website the special created address is the long complicated address that is generated when you click the "Create Address" button. For example "john_at_example.com_tim@duck.com"</p>
+    </section>
+    
     <section id="faq">
       <h2>Frequently Asked Questions</h2>
       <div class="accordion">
@@ -77,7 +91,7 @@
         
         <button class="accordion-btn">Why is the generate private duck address feature disabled?</button>
         <div class="accordion-content">
-        <p>Unfortunately, when trying to contact the DuckDuckGo API directly in the script, a CORS error was coming back and there appeared to be no fix. That means that it has come down to using a CORS proxy service. Initially, the website was using the cors-anywhere.herokuapp.com, however this appears to be rate limited and it no longer works for requests from the website. A good alternative is cors.sh (same thing except more stable). The problem is that this is a paid service UNLESS your project is open sourced AND has at least 5 stars. Until the project can get 5 stars the feature is disabled. When 5 stars is reached, cors.sh will be implemented and the feature re-eneabled. So, to get this feature back up and running, please give the repo a star!</p>
+        <p>Unfortunately, when trying to contact the DuckDuckGo API directly in the script, a CORS error was coming back and there appeared to be no fix. That means that it has come down to using a CORS proxy service. Initially, the website was using the cors-anywhere.herokuapp.com, however this appears to be rate limited and it no longer works for requests from the website. A good alternative is cors.sh (same thing except more stable). The problem is that this is a paid service UNLESS your project is open sourced AND has at least 5 stars. Until the project can get 5 stars the feature is disabled. When 5 stars is reached, cors.sh will be implemented and the feature re-enabled. So, to get this feature back up and running, please give the repo a star!</p>
         </div>
         
         <button class="accordion-btn">How to send from my duck address to more than one email address?</button>
@@ -90,7 +104,6 @@
         <p>This website is not endorsed by or part of DuckDuckGo. For help with the email service please contact them or go to their <a href="https://duckduckgo.com/duckduckgo-help-pages/email-protection/">official support page</a>.</p>
         </div>
         
-        <!-- Add more accordion items as needed -->
       </div>
     </section>
   </main>
