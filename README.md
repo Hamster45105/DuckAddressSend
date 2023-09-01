@@ -13,22 +13,26 @@
 ## ⚠️ Get the generate private Duck Address Feature back up and running! ⚠️
 It would be great to re-enable this feature, however it can’t be done until this repo reached **5** stars! More info [here](https://github.com/Hamster45105/DuckAddressSend/issues/7#issuecomment-1681736743).
 
-## About
+## About ❓
 This project is designed to make it easier to send emails from your Duck Addresses. It is written entirely in CSS, JavaScript and HTML. The website has a simple interface. To get help with using the interface, click the red help button at the bottom of the page on the site.
 
-## Code
+## Code 👨‍💻
 This site is hosted using GitHub pages. As soon as a new release is published, it is deployed to GitHub pages.
 
 All branches are under active development, for latest stable source code go to releases.
 
-## Contributing
+## Contributing 🙋‍♀️
 To help with code, feel free to fork and create a pull request.
 
 Found a bug? Open an issue with as much detail as possible.
 
 Just ❤️ the website? Give the repo a star 🌟!
 
-## License
+## License 📜
 This repository is licenesed under the MIT License.
 
 In a Nutshell: The MIT License lets you use, tweak, and share software freely, but you need to give credit to the original creators by including the license when you use their stuff.
+
+## Star History 📈
+
+[![Star History Chart](https://api.star-history.com/svg?repos=&type=Date)](https://star-history.com/)
