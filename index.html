@@ -94,6 +94,8 @@
                 }
                 var textbox1Parts = textbox1Value.split("@");
                 var combinedText = textbox1Parts[0] + "_at_" + textbox1Parts[1] + "_" + textbox2Value;
+                copyButton.style.backgroundColor = "#007bff";
+                copyButton.textContent = "Copy to Clipboard";
                 document.getElementById("combinedText").innerHTML = combinedText;
                 document.getElementById("copyButton").removeAttribute("hidden");
                 document.getElementById("mailButton").removeAttribute("hidden");
@@ -107,7 +109,8 @@
                 window.getSelection().addRange(range);
                 document.execCommand("copy");
                 window.getSelection().removeAllRanges();
-                alert("Copied to clipboard!");
+                copyButton.style.backgroundColor = "#6fc134";
+                copyButton.textContent = "Copied!";    
             }
 
             function sendEmail() {
