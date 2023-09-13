@@ -26,12 +26,13 @@
                                       
                     
                     <div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 999;">
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 5px;">
-                            <h2>DDG API Key:</h2>
-                            <input type="password" id="popupInput">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 5px; text-align: center;">
+                            <h2>Generate Private Duck Address</Address></h2>
+                            <p>Please enter your DuckDuckGo API key here. <a href='https://github.com/Hamster45105/DuckAddressSend/wiki/Get-DDG-API-Key'> Click here to find out how to get it.</a> </p>
+                            <input type="password" id="popupInput" style="width: 90%; padding: 10px;">
                             <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-                                <button onclick="closePopup()">OK</button>
-                                <button onclick="document.getElementById('popup').style.display = 'none';">Cancel</button>
+                                <button onclick="closePopup()" style="background-color: #008CBA; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Generate</button>
+                                <button onclick="document.getElementById('popup').style.display = 'none';" style="background-color: #f44336; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Cancel</button>
                             </div>
                         </div>
                     </div>
