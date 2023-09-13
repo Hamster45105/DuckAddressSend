@@ -20,6 +20,18 @@ input[type="email"] {
     margin-bottom: 20px;
     width: 100%;
 }
+textarea {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    margin-bottom: 20px;
+    width: 100%;
+    resize: none;
+    height: auto;
+  }
 input[type="text"] {
     padding: 10px;
     border-radius: 5px;
