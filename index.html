@@ -101,7 +101,7 @@
 
                     for (let i = 0; i < lines.length; i++) {
                         if (!emailRegex.test(lines[i])) {
-                            openErrorPopup(`"${lines[i]}" is not a valid email address`);
+                            openErrorPopup(`"${lines[i]}" (on line ${i + 1}) is not a valid email address`);
                             return false;
                         }
                         var textbox1Parts = lines[i].split("@");
