@@ -181,6 +181,12 @@
             textbox2.focus();
         }
         });
+
+        popupInput.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13) {
+            closePopup();
+        }
+        });
         </script>
         </div>
                 <footer>
