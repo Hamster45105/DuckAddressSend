@@ -175,6 +175,18 @@
         }
         window.addEventListener("load", showStarPopup);
 
+        // Keyboard shortcuts
+        textbox2.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13) {
+            combineText();
+        }
+        });
+
+        textbox1.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13) {
+            textbox2.focus();
+        }
+        });
         </script>
         </div>
                 <footer>
