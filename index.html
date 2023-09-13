@@ -85,45 +85,64 @@
             </div>
         </div>
         <script>
+            let result;
+            
             function combineText() {
                 var textbox1Value = document.getElementById("textbox1").value;
                 var textbox2Value = document.getElementById("textbox2").value;
                 var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 var duckEmailRegex = /^[^\s@]+@duck\.com$/;
 
-                if (!emailRegex.test(textbox1Value)) {
-                    openErrorPopup("Please enter a valid email address!");
-                    return false;
-                }
+                const textareaElement = document.getElementById("textbox1");
+                const lines = textareaElement.value.split("\n");
 
-                if (!duckEmailRegex.test(textbox2Value)){
-                    openErrorPopup("Please enter a valid duck address!");
-                    return false;
-                }
-                var textbox1Parts = textbox1Value.split("@");
-                var combinedText = textbox1Parts[0] + "_at_" + textbox1Parts[1] + "_" + textbox2Value;
+                var results = [];
+
+                    for (let i = 0; i < lines.length; i++) {
+                        if (!emailRegex.test(lines[i])) {
+                            openErrorPopup(`Email address ${i + 1} is not a valid email address`);
+                            return false;
+                        }
+                        var textbox1Parts = lines[i].split("@");
+                        var combinedText = textbox1Parts[0] + "_at_" + textbox1Parts[1] + "_" + textbox2Value;
+                        results.push(combinedText);
+                    }
+
+                    if (!duckEmailRegex.test(textbox2Value)) {
+                        openErrorPopup("Please enter a valid duck address!");
+                        return false;
+                    }
+
+                    result = results.join(", ");
+                
+                    document.getElementById("combinedText").innerHTML = result;
+                
                 copyButton.style.backgroundColor = "#007bff";
                 copyButton.textContent = "Copy to Clipboard";
-                document.getElementById("combinedText").innerHTML = combinedText;
+
+                if (lines.length === 1) {
+                    document.getElementById("combinedText").innerHTML = combinedText;
+                } else {
+                    document.getElementById("combinedText").innerHTML = "Full List of Addresses Not Displayed";
+                }
+
                 document.getElementById("copyButton").removeAttribute("hidden");
                 document.getElementById("mailButton").removeAttribute("hidden");
             }
 
             function copyToClipboard() {
-                var combinedText = document.getElementById("combinedText");
-                var range = document.createRange();
-                range.selectNode(combinedText);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
+                const tempElement = document.createElement("textarea");
+                tempElement.value = result;
+                document.body.appendChild(tempElement);
+                tempElement.select();
                 document.execCommand("copy");
-                window.getSelection().removeAllRanges();
+                document.body.removeChild(tempElement);
                 copyButton.style.backgroundColor = "#6fc134";
-                copyButton.textContent = "Copied!";    
+                copyButton.textContent = "Copied!";
             }
 
             function sendEmail() {
-                const combinedText = document.getElementById("combinedText").textContent;
-                const mailtoLink = `mailto:${combinedText}`;
+                const mailtoLink = `mailto:${result}`;
                 window.location.href = mailtoLink;
             }
 
@@ -137,7 +156,6 @@
                 document.getElementById("errorPopup").style.display = "block";
             }
             
-
             async function closePopup() {
                 const apiKey = document.getElementById("popupInput").value;
                 const emailAddresses = await postEmailAddresses(apiKey);
@@ -167,13 +185,18 @@
                 const json = await response.json();
                 return json;
             } 
+
             function showStarPopup() {
             if (!localStorage.getItem("popupShown")) {
                 document.getElementById("starPopup").style.display = "block";
                 localStorage.setItem("popupShown", true);
             }
-        }
-        window.addEventListener("load", showStarPopup);
+            }
+            function pageLoad() {
+                showStarPopup();
+            }
+
+        window.addEventListener("load", pageLoad);
 
         // Keyboard shortcuts
         textbox2.addEventListener("keydown", function(event) {
@@ -182,11 +205,6 @@
         }
         });
 
-        textbox1.addEventListener("keydown", function(event) {
-        if (event.keyCode === 13) {
-            textbox2.focus();
-        }
-        });
         </script>
         </div>
                 <footer>
