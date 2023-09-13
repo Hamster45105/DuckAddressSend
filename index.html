@@ -95,7 +95,13 @@
                 var duckEmailRegex = /^[^\s@]+@duck\.com$/;
 
                 const textareaElement = document.getElementById("textbox1");
-                const lines = textareaElement.value.split("\n");
+                var lines = textareaElement.value.split("\n");
+
+                const nonEmptyLines = lines.filter(line => line.trim() !== "");
+                const newValue = nonEmptyLines.join("\n");
+                textareaElement.value = newValue;
+                var lines = textareaElement.value.split("\n");
+
 
                 var results = [];
 
