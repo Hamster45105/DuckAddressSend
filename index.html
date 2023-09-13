@@ -131,7 +131,6 @@
                 document.getElementById("errorPopup").style.display = "block";
             }
             
-
             async function closePopup() {
                 const apiKey = document.getElementById("popupInput").value;
                 const emailAddresses = await postEmailAddresses(apiKey);
@@ -167,6 +166,7 @@
                 localStorage.setItem("popupShown", true);
             }
         }
+        
         window.addEventListener("load", showStarPopup);
 
         // Keyboard shortcuts
@@ -189,14 +189,15 @@
         });
         </script>
         </div>
-                <footer>
+    
+    <footer>
     <button onclick="window.location.href='https://github.com/Hamster45105/DuckAddressSend/wiki'" style="border-radius: 55px; background-color: #ff4d4d;">HELP!</button>
     <div style="margin-top: 10px;">
         <a href="https://github.com/Hamster45105/DuckAddressSend" target="_blank"><img src="https://img.shields.io/github/stars/Hamster45105/DuckAddressSend?style=social" alt="GitHub"></a>
     </div>
     <p>Made with 💖 by <a href="https://github.com/Hamster45105">Hamster45105</a></p>
     <p>Disclaimer: This website is not made by or an offical service of DuckDuckGo in any way!</p>
-</footer>
+    </footer>
             </body>
         </html>
     </body>
