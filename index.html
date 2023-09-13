@@ -19,8 +19,11 @@
                 <div style="display: flex; flex-direction: row; align-items: center;">
                     <div style="display: flex; flex-direction: row; align-items: center; flex: 1; justify-content: flex-end;">
                         <input type="email" id="textbox2" name="textbox2" placeholder="tim@duck.com" style="flex-grow: 1;">
-                        <button onclick="openPopup()" style="margin-left: 10px; padding: 5px 10px;">🔄</button>
+                        <button onclick="openPopup()" style="margin-left: auto; margin-top: -30px; padding: 5px 10px; height: 30px; background-color: transparent;">
+                            <img src="generate_icon.png" alt="Generate address" style="height: 160%; width: auto;">
+                        </button>
                     </div>
+                                      
                     
                     <div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 999;">
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 5px;">
