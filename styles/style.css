@@ -12,7 +12,7 @@ label {
     display: block;
 }
 input[type="email"] {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -22,7 +22,7 @@ input[type="email"] {
     width: 100%;
 }
 textarea {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -107,6 +107,7 @@ footer {
     color: #999;
 }
 footer a {
+    font-family: 'Roboto Mono', monospace;
     color: #999;
     text-decoration: none;
 }
