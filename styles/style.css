@@ -32,6 +32,7 @@ textarea {
     width: 100%;
     resize: vertical;
     height: auto;
+    padding-right: 0px;
 }
 input[type="text"] {
     padding: 10px;
