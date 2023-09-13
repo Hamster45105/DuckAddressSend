@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>DDG Sending Generator</title>
+        <title>DDG Sending Generator | Send emails FROM your duck addresses</title>
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./styles/style.css">
@@ -36,11 +36,19 @@
                     <div id="errorPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 999;">
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 5px; text-align: center; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); animation: fade-in 0.5s ease-out;">
                             <h2 style="color: #ff0000;">Error</h2>
-                            <p id="error-message" style="color: #ff0000;">Unfortunately, this feature is disabled until the repository for this website reaches 5 stars.</p>
+                            <p id="error-message" style="color: #ff0000;">An error occured</p>
                             <button onclick="document.getElementById('errorPopup').style.display = 'none';" style="background-color: #ff0000; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Dismiss</button>
                         </div>
                     </div>
 
+                    <div id="starPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 999;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 5px; text-align: center; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); animation: fade-in 0.5s ease-out;">
+                            <h2 style="color: #000; font-size: 2em;">Give the project a 🌟</h2>
+                            <p style="color: #000; font-size: 1.2em;">If you like this project, please consider giving it a star on GitHub! This will help us to <a href='https://github.com/Hamster45105/DuckAddressSend/issues/7#issuecomment-1681736743'>re-enable the generate Duck Address feature!</a> </p>
+                            <button onclick="window.open('https://github.com/Hamster45105/DuckAddressSend', '_blank'); document.getElementById('starPopup').style.display = 'none';" style="background-color: #008CBA; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Give it a star! 🤩</button>
+                        </div>
+                        <button onclick="document.getElementById('starPopup').style.display = 'none';" style="position: absolute; top: 10px; right: 10px; background-color: #fff; color: #000; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Close</button>
+                    </div>
                     <style>
                         @keyframes fade-in {
                             from {
@@ -84,6 +92,8 @@
                 }
                 var textbox1Parts = textbox1Value.split("@");
                 var combinedText = textbox1Parts[0] + "_at_" + textbox1Parts[1] + "_" + textbox2Value;
+                copyButton.style.backgroundColor = "#007bff";
+                copyButton.textContent = "Copy to Clipboard";
                 document.getElementById("combinedText").innerHTML = combinedText;
                 document.getElementById("copyButton").removeAttribute("hidden");
                 document.getElementById("mailButton").removeAttribute("hidden");
@@ -97,7 +107,8 @@
                 window.getSelection().addRange(range);
                 document.execCommand("copy");
                 window.getSelection().removeAllRanges();
-                alert("Copied to clipboard!");
+                copyButton.style.backgroundColor = "#6fc134";
+                copyButton.textContent = "Copied!";    
             }
 
             function sendEmail() {
@@ -145,7 +156,27 @@
                 }
                 const json = await response.json();
                 return json;
+            } 
+            function showStarPopup() {
+            if (!localStorage.getItem("popupShown")) {
+                document.getElementById("starPopup").style.display = "block";
+                localStorage.setItem("popupShown", true);
             }
+        }
+        window.addEventListener("load", showStarPopup);
+
+        // Keyboard shortcuts
+        textbox2.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13) {
+            combineText();
+        }
+        });
+
+        textbox1.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13) {
+            textbox2.focus();
+        }
+        });
         </script>
         </div>
                 <footer>
