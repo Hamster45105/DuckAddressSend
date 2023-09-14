@@ -226,7 +226,19 @@
                 if (document.activeElement === document.getElementById("textbox2")) {
                     combineText();
                 }
+                if (document.activeElement === document.getElementById("textbox1")) {
+                    document.getElementById("textbox1").rows += 1;
+                }
             }
+        });
+
+        var numLines = textbox1.value.split("\n").length;
+        textbox1.addEventListener("input", function() {
+            var newNumLines = textbox1.value.split("\n").length;
+            if (newNumLines < numLines) {
+                textbox1.rows -= 1;
+            }
+            numLines = newNumLines;   
         });
         </script>
         </div>
