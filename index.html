@@ -122,8 +122,9 @@
             }
 
             function openPopup() {
-                document.getElementById("popupInput").value = localStorage.getItem("apiKey");
+                document.getElementById("popupInput").value = localStorage.getItem("apiKey"); 
                 document.getElementById("popup").style.display = "block";
+                popupInput.focus();
             }
 
             function openErrorPopup(errorMessage) {
