@@ -24,6 +24,16 @@ All branches are under active development, for latest stable source code go to r
 > :warning: **Warning!!!** <br>
 Despite being one page of CSS, JavaScript and HTML, the formatting of the code and naming of things is quite a mess!
 
+## Does the website actually do anything special that I can't do myself? 🤔
+No, all it is doing is following the instructions found [here](https://duckduckgo.com/duckduckgo-help-pages/email-protection/duck-addresses/how-do-i-compose-a-new-email/) to create those special addresses.
+
+However, here are some reasons to use the website:
+
+* It makes it easier to send from you duck addresses, so you don’t have to type it out or remember the special pattern.
+* You can send an email to multiple people, it would take a long time to do it manually if you are sending to a lot of people.
+* You can easily generate private duck addresses straight in the website (soon!).
+* It looks nice :)
+
 ## Contributing 🙋‍♀️
 To help with code, feel free to 🍴 and create a pull request.
 
