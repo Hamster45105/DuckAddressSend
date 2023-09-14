@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>API Key Check</title>
+  <link rel="stylesheet" href="./styles/auth_style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>API Key Check</h1>
+    <p id="message"></p>
+    <div id="buttons"></div>
+  </div>
+  <script>
+    // get key value from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const key = urlParams.get("key");
+
+    // get apiKey value from localStorage
+    const apiKey = localStorage.getItem("apiKey");
+
+    // check if apiKey is the same as key
+    if (apiKey === key) {
+      // redirect back to index.html
+      window.location.href = "./";
+    } else if (apiKey) {
+      // add buttons for overwriting apiKey
+      const messageElement = document.getElementById("message");
+      messageElement.textContent = "Do you want to overwrite the API key?";
+      const buttonsElement = document.getElementById("buttons");
+      const yesButton = document.createElement("button");
+      yesButton.textContent = "Yes";
+      yesButton.addEventListener("click", function() {
+        // overwrite apiKey with key and redirect back to index.html
+        localStorage.setItem("apiKey", key);
+        window.location.href = "./";
+      });
+      const noButton = document.createElement("button");
+      noButton.textContent = "No";
+      noButton.addEventListener("click", function() {
+        // redirect back to index.html
+        window.location.href = "./";
+      });
+      buttonsElement.appendChild(yesButton);
+      buttonsElement.appendChild(noButton);
+    } else {
+      // write key value to apiKey and redirect back to index.html
+      localStorage.setItem("apiKey", key);
+      window.location.href = "./";
+    }
+  </script>
+</body>
+</html>
