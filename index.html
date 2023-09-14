@@ -162,7 +162,10 @@
             }
 
             function openErrorPopup(errorMessage) {
+                document.getElementById("combinedText").innerHTML = "";
                 document.getElementById("textbox2").blur();
+                document.getElementById("copyButton").setAttribute("hidden", true);
+                document.getElementById("mailButton").setAttribute("hidden", true);
                 document.getElementById("error-message").innerHTML = errorMessage;
                 document.getElementById("errorPopup").style.display = "block";
             }
