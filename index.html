@@ -108,6 +108,7 @@
                     for (let i = 0; i < lines.length; i++) {
                         if (!emailRegex.test(lines[i])) {
                             openErrorPopup(`"${lines[i]}" (on line ${i + 1}) is not a valid email address`);
+                            document.getElementById("textbox2").blur();
                             return false;
                         }
                         var textbox1Parts = lines[i].split("@");
@@ -117,6 +118,7 @@
 
                     if (!duckEmailRegex.test(textbox2Value)) {
                         openErrorPopup("Please enter a valid duck address!");
+                        document.getElementById("textbox2").blur();
                         return false;
                     }
 
@@ -205,12 +207,27 @@
         window.addEventListener("load", pageLoad);
 
         // Keyboard shortcuts
-        textbox2.addEventListener("keydown", function(event) {
-        if (event.keyCode === 13) {
-            combineText();
+        document.addEventListener("keydown", function(event) {
+        if (event.ctrlKey && event.keyCode === 13) {
+            document.getElementById("textbox2").focus();
         }
         });
-
+        
+        document.addEventListener("keydown", function(event) {
+            if (event.keyCode === 13 && !event.ctrlKey && !event.altKey && !event.shiftKey) {
+                if (errorPopup.style.display === "block") {
+                    event.preventDefault();
+                    errorPopup.style.display = "none";
+                }
+                if (placeholder_popup.style.display === "block") {
+                    event.preventDefault();
+                    placeholder_popup.style.display = "none";
+                }
+                if (document.activeElement === document.getElementById("textbox2")) {
+                    combineText();
+                }
+            }
+        });
         </script>
         </div>
                 <footer>
