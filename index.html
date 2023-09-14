@@ -213,17 +213,24 @@
         }
         });
         
+        var textbox2active = false;
         document.addEventListener("keydown", function(event) {
             if (event.keyCode === 13 && !event.ctrlKey && !event.altKey && !event.shiftKey) {
                 if (errorPopup.style.display === "block") {
                     event.preventDefault();
                     errorPopup.style.display = "none";
+                    if (textbox2active === true) {
+                        setTimeout(function() {
+                            document.getElementById("textbox2").focus();
+                        }, 0);
+                    }
                 }
                 if (placeholder_popup.style.display === "block") {
                     event.preventDefault();
                     placeholder_popup.style.display = "none";
                 }
                 if (document.activeElement === document.getElementById("textbox2")) {
+                    textbox2active = true;
                     combineText();
                 }
                 if (document.activeElement === document.getElementById("textbox1")) {
