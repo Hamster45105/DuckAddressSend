@@ -48,7 +48,7 @@
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 5px; text-align: center; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); animation: fade-in 0.5s ease-out;">
                             <h2 style="color: #ff0000;">Error</h2>
                             <p id="error-message" style="color: #ff0000;">An error occured</p>
-                            <button onclick="document.getElementById('errorPopup').style.display = 'none';" style="background-color: #ff0000; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Dismiss</button>
+                            <button onclick="closeErrorPopup();" style="background-color: #ff0000; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Dismiss</button>
                         </div>
                     </div>
 
@@ -87,6 +87,7 @@
         </div>
         <script>
             let result;
+            let errorTextbox;
             
             function combineText() {
                 var textbox1Value = document.getElementById("textbox1").value;
@@ -109,6 +110,7 @@
                         if (!emailRegex.test(lines[i])) {
                             openErrorPopup(`"${lines[i]}" (on line ${i + 1}) is not a valid email address`);
                             document.getElementById("textbox2").blur();
+                            errorTextbox = "textbox1";
                             return false;
                         }
                         var textbox1Parts = lines[i].split("@");
@@ -119,6 +121,7 @@
                     if (!duckEmailRegex.test(textbox2Value)) {
                         openErrorPopup("Please enter a valid duck address!");
                         document.getElementById("textbox2").blur();
+                        errorTextbox = "textbox2";
                         return false;
                     }
 
@@ -203,6 +206,10 @@
             function pageLoad() {
                 showStarPopup();
             }
+            function closeErrorPopup() {
+                document.getElementById("errorPopup").style.display = "none";
+                document.getElementById(errorTextbox).focus();
+            }
 
         window.addEventListener("load", pageLoad);
 
@@ -221,7 +228,7 @@
                     errorPopup.style.display = "none";
                     if (textbox2active === true) {
                         setTimeout(function() {
-                            document.getElementById("textbox2").focus();
+                            closeErrorPopup();
                         }, 0);
                     }
                 }
