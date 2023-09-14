@@ -125,15 +125,16 @@
 
                     result = results.join(",");
                 
-                    document.getElementById("combinedText").innerHTML = result;
                 
                 copyButton.style.backgroundColor = "#007bff";
                 copyButton.textContent = "Copy to Clipboard";
 
                 if (lines.length === 1) {
-                    document.getElementById("combinedText").innerHTML = combinedText;
+                    document.getElementById("combinedText").innerHTML = result;
                 } else {
-                    document.getElementById("combinedText").innerHTML = "Full List of Addresses Not Displayed";
+                    var resultLines = result.split(",");
+                    var resultNewText = resultLines.join("\n");
+                    document.getElementById("combinedText").innerHTML = resultNewText;
                 }
 
                 document.getElementById("copyButton").removeAttribute("hidden");
