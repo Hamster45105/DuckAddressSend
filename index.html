@@ -134,9 +134,19 @@
             }
             
             async function closePopup() {
+                var emailAddresses;
+                var duckAddress;
+                const cookieValue = localStorage.getItem("loginAddress");
+                const generatedKey = localStorage.getItem("loginAddressKey");
                 const apiKey = document.getElementById("popupInput").value;
-                const emailAddresses = await postEmailAddresses(apiKey);
-                const duckAddress = emailAddresses.address + "@duck.com";
+                if (cookieValue !== null && generatedKey == apiKey) {
+                    emailAddresses = cookieValue;
+                    localStorage.removeItem("loginAddress");
+                    duckAddress = emailAddresses + "@duck.com";
+                } else {
+                    emailAddresses = await postEmailAddresses(apiKey);
+                    duckAddress = emailAddresses.address + "@duck.com";
+                }
                 document.getElementById("textbox2").value = duckAddress;
                 localStorage.setItem("apiKey", apiKey);
                 document.getElementById("popup").style.display = "none";
