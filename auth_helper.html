@@ -12,7 +12,12 @@
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('key');
             // If the code parameter is present, show a popup with its value
-            if (code) {
+            if (!code) {
+                const errorDiv = document.createElement('div');
+                errorDiv.classList.add('error');
+                errorDiv.textContent = 'No API key given!';
+                document.body.appendChild(errorDiv);
+            } else {
                 const popup = document.createElement('div');
                 popup.classList.add('popup');
                 const h2 = document.createElement('h2');
