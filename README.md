@@ -31,7 +31,7 @@ However, here are some reasons to use the website:
 
 * It makes it easier to send from you duck addresses, so you don’t have to type it out or remember the special pattern.
 * You can send an email to multiple people, it would take a long time to do it manually if you are sending to a lot of people.
-* You can easily generate private duck addresses straight in the website (soon!).
+* You can easily generate private duck addresses straight in the website.
 * It looks nice :)
 
 ## Contributing 🙋‍♀️
