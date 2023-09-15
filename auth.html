@@ -32,6 +32,8 @@
         messageElement.textContent = "Do you want to overwrite your previous API key?";
         const buttonsElement = document.getElementById("buttons");
         const yesButton = document.createElement("button");
+        yesButton.style.backgroundColor = "green";
+        yesButton.style.marginRight = "10px";        
         yesButton.textContent = "Yes";
         yesButton.addEventListener("click", function() {
             async function validateAndRedirect1() {
@@ -52,6 +54,8 @@
             validateAndRedirect1();
           });
         const noButton = document.createElement("button");
+        noButton.style.backgroundColor = "red";
+        noButton.style.marginLeft = "10px";
         noButton.textContent = "No";
         noButton.addEventListener("click", function() {
           // redirect back to index.html
