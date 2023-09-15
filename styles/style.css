@@ -12,6 +12,7 @@ label {
     display: block;
 }
 input[type="email"] {
+    font-family: 'Open Sans', sans-serif;
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -19,6 +20,19 @@ input[type="email"] {
     font-size: 16px;
     margin-bottom: 20px;
     width: 100%;
+}
+textarea {
+    font-family: 'Open Sans', sans-serif;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    margin-bottom: 20px;
+    width: 100%;
+    resize: none;
+    height: auto;
+    padding-right: 0px;
 }
 input[type="text"] {
     padding: 10px;
@@ -35,7 +49,7 @@ input[type="password"] {
     border-radius: 5px;
     font-size: 16px;
     outline: none;
-  }
+}
   
   input[type="password"]:focus {
     border-color: #007bff;
@@ -94,6 +108,7 @@ footer {
     color: #999;
 }
 footer a {
+    font-family: 'Roboto Mono', monospace;
     color: #999;
     text-decoration: none;
 }

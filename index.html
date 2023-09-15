@@ -5,6 +5,7 @@
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./styles/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
     <body>
         <div class="container">
@@ -13,8 +14,8 @@
             <h3>Did you know that you can send FROM duck addresses? Use this tool to help you do it!</h3>
 
             <div style="display: flex; flex-direction: column;">
-                <label for="textbox1">Address to send TO:</label>
-                <input type="email" id="textbox1" name="textbox1" placeholder="john@example.com">
+                <label for="textbox1">Address/es to send TO (one per line):</label>
+                <textarea id="textbox1" name="textbox1" placeholder="john@example.com" rows="1"></textarea>
                 <label for="textbox2">Address to send FROM:</label>
                 <div style="display: flex; flex-direction: row; align-items: center;">
                     <div style="display: flex; flex-direction: row; align-items: center; flex: 1; justify-content: flex-end;">
@@ -41,7 +42,7 @@
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 5px; text-align: center; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); animation: fade-in 0.5s ease-out;">
                             <h2 style="color: #ff0000;">Error</h2>
                             <p id="error-message" style="color: #ff0000;">An error occured</p>
-                            <button onclick="document.getElementById('errorPopup').style.display = 'none';" style="background-color: #ff0000; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Dismiss</button>
+                            <button onclick="closeErrorPopup();" style="background-color: #ff0000; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Dismiss</button>
                         </div>
                     </div>
 
@@ -80,15 +81,55 @@
             </div>
         </div>
         <script>
+            let result;
+            let errorTextbox;
+            
             function combineText() {
                 var textbox1Value = document.getElementById("textbox1").value;
                 var textbox2Value = document.getElementById("textbox2").value;
                 var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 var duckEmailRegex = /^[^\s@]+@duck\.com$/;
 
-                if (!emailRegex.test(textbox1Value)) {
-                    openErrorPopup("Please enter a valid email address!");
-                    return false;
+                const textareaElement = document.getElementById("textbox1");
+                var lines = textareaElement.value.split("\n");
+
+                const nonEmptyLines = lines.filter(line => line.trim() !== "");
+                const newValue = nonEmptyLines.join("\n");
+                textareaElement.value = newValue;
+                var lines = textareaElement.value.split("\n");
+
+
+                var results = [];
+
+                    for (let i = 0; i < lines.length; i++) {
+                        if (!emailRegex.test(lines[i])) {
+                            openErrorPopup(`"${lines[i]}" (on line ${i + 1}) is not a valid email address`);
+                            errorTextbox = "textbox1";
+                            return false;
+                        }
+                        var textbox1Parts = lines[i].split("@");
+                        var combinedText = textbox1Parts[0] + "_at_" + textbox1Parts[1] + "_" + textbox2Value;
+                        results.push(combinedText);
+                    }
+
+                    if (!duckEmailRegex.test(textbox2Value)) {
+                        openErrorPopup("Please enter a valid duck address!");
+                        errorTextbox = "textbox2";
+                        return false;
+                    }
+
+                    result = results.join(",");
+                
+                
+                copyButton.style.backgroundColor = "#007bff";
+                copyButton.textContent = "Copy to Clipboard";
+
+                if (lines.length === 1) {
+                    document.getElementById("combinedText").innerHTML = result;
+                } else {
+                    var resultLines = result.split(",");
+                    var resultNewText = resultLines.join("\n");
+                    document.getElementById("combinedText").innerHTML = resultNewText;
                 }
 
                 if (!duckEmailRegex.test(textbox2Value)){
@@ -105,20 +146,18 @@
             }
 
             function copyToClipboard() {
-                var combinedText = document.getElementById("combinedText");
-                var range = document.createRange();
-                range.selectNode(combinedText);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
+                const tempElement = document.createElement("textarea");
+                tempElement.value = result;
+                document.body.appendChild(tempElement);
+                tempElement.select();
                 document.execCommand("copy");
-                window.getSelection().removeAllRanges();
+                document.body.removeChild(tempElement);
                 copyButton.style.backgroundColor = "#6fc134";
-                copyButton.textContent = "Copied!";    
+                copyButton.textContent = "Copied!";
             }
 
             function sendEmail() {
-                const combinedText = document.getElementById("combinedText").textContent;
-                const mailtoLink = `mailto:${combinedText}`;
+                const mailtoLink = `mailto:${result}`;
                 window.location.href = mailtoLink;
             }
 
@@ -129,6 +168,10 @@
             }
 
             function openErrorPopup(errorMessage) {
+                document.getElementById("combinedText").innerHTML = "";
+                document.getElementById("textbox2").blur();
+                document.getElementById("copyButton").setAttribute("hidden", true);
+                document.getElementById("mailButton").setAttribute("hidden", true);
                 document.getElementById("error-message").innerHTML = errorMessage;
                 document.getElementById("errorPopup").style.display = "block";
             }
@@ -181,27 +224,62 @@
                 document.getElementById("starPopup").style.display = "block";
                 localStorage.setItem("popupShown", true);
             }
-        }
-        
-        window.addEventListener("load", showStarPopup);
+            }
+            function pageLoad() {
+                showStarPopup();
+                document.getElementById("textbox1").value = "";
+                document.getElementById("textbox2").value = "";
+            }
+            function closeErrorPopup() {
+                document.getElementById("errorPopup").style.display = "none";
+                document.getElementById(errorTextbox).focus();
+                decreaseTextAreaSize();
+            }
+            function increaseTextAreaSize() {
+                document.getElementById("textbox1").rows += 1;
+            }
+            function decreaseTextAreaSize() {
+                var numRows = document.getElementById("textbox1").rows;
+                var newNumLines = document.getElementById("textbox1").value.split("\n").length;
+                if (newNumLines < numRows) {
+                    textbox1.rows = newNumLines;
+                }
+            }
+
+        window.addEventListener("load", pageLoad);
 
         // Keyboard shortcuts
-        textbox2.addEventListener("keydown", function(event) {
-        if (event.keyCode === 13) {
-            combineText();
+        document.addEventListener("keydown", function(event) {
+        if (event.ctrlKey && event.keyCode === 13) {
+            document.getElementById("textbox2").focus();
         }
         });
-
-        textbox1.addEventListener("keydown", function(event) {
-        if (event.keyCode === 13) {
-            textbox2.focus();
-        }
+        
+        document.addEventListener("keydown", function(event) {
+            if (event.keyCode === 13 && !event.ctrlKey && !event.altKey && !event.shiftKey) {
+                if (errorPopup.style.display === "block") {
+                    event.preventDefault();
+                    errorPopup.style.display = "none";
+                        setTimeout(function() {
+                            closeErrorPopup();
+                        }, 0);
+                    
+                }
+                if (placeholder_popup.style.display === "block") {
+                    event.preventDefault();
+                    placeholder_popup.style.display = "none";
+                }
+                if (document.activeElement === document.getElementById("textbox2")) {
+                    combineText();
+                }
+                if (document.activeElement === document.getElementById("textbox1")) {
+                    document.getElementById("textbox1").rows += 1;
+                }
+            }
         });
 
-        popupInput.addEventListener("keydown", function(event) {
-        if (event.keyCode === 13) {
-            closePopup();
-        }
+        textbox1.addEventListener("input", function() {
+            decreaseTextAreaSize();
         });
         </script>
         </div>
@@ -212,7 +290,8 @@
         <a href="https://github.com/Hamster45105/DuckAddressSend" target="_blank"><img src="https://img.shields.io/github/stars/Hamster45105/DuckAddressSend?style=social" alt="GitHub"></a>
     </div>
     <p>Made with 💖 by <a href="https://github.com/Hamster45105">Hamster45105</a></p>
-    <p>Disclaimer: This website is not made by or an offical service of DuckDuckGo in any way!</p>
+    <p>Disclaimer: This website is not made by or an official service of DuckDuckGo in any way!</p>
+    <p style="font-size: 1.2em; font-weight: bold;"> <a href="https://github.com/Hamster45105/DuckAddressSend/releases/latest">Version 1.5.1</a></p>
     </footer>
             </body>
         </html>
