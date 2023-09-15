@@ -12,6 +12,8 @@
     <div id="buttons"></div>
   </div>
   <script>
+    let validateResult;
+
     // get key value from URL
     const urlParams = new URLSearchParams(window.location.search);
     const key = urlParams.get("key");
@@ -19,34 +21,72 @@
     // get apiKey value from localStorage
     const apiKey = localStorage.getItem("apiKey");
 
-    // check if apiKey is the same as key
-    if (apiKey === key) {
-      // redirect back to index.html
-      window.location.href = "./";
-    } else if (apiKey) {
-      // add buttons for overwriting apiKey
-      const messageElement = document.getElementById("message");
-      messageElement.textContent = "Do you want to overwrite the API key?";
-      const buttonsElement = document.getElementById("buttons");
-      const yesButton = document.createElement("button");
-      yesButton.textContent = "Yes";
-      yesButton.addEventListener("click", function() {
-        // overwrite apiKey with key and redirect back to index.html
-        localStorage.setItem("apiKey", key);
-        window.location.href = "./";
-      });
-      const noButton = document.createElement("button");
-      noButton.textContent = "No";
-      noButton.addEventListener("click", function() {
+      // check if apiKey is the same as key
+      if (apiKey === key) {
         // redirect back to index.html
         window.location.href = "./";
-      });
-      buttonsElement.appendChild(yesButton);
-      buttonsElement.appendChild(noButton);
-    } else {
-      // write key value to apiKey and redirect back to index.html
-      localStorage.setItem("apiKey", key);
-      window.location.href = "./";
+      } else if (apiKey) {
+        // add buttons for overwriting apiKey
+        const messageElement = document.getElementById("message");
+        messageElement.textContent = "Do you want to overwrite the API key?";
+        const buttonsElement = document.getElementById("buttons");
+        const yesButton = document.createElement("button");
+        yesButton.textContent = "Yes";
+        yesButton.addEventListener("click", function() {
+            async function validateAndRedirect1() {
+              validateResult = await checkEmailAddresses(key);
+              if (validateResult === null) {
+                const messageElement = document.getElementById("message");
+                messageElement.textContent = "Invalid API Key Given";
+                const buttonsElement = document.getElementById("buttons");
+                buttonsElement.remove();
+              } else {
+                // If validation is successful, overwrite apiKey and redirect
+                localStorage.setItem("apiKey", key);
+                window.location.href = "./";
+              }
+            }
+            validateAndRedirect1();
+          });
+        const noButton = document.createElement("button");
+        noButton.textContent = "No";
+        noButton.addEventListener("click", function() {
+          // redirect back to index.html
+          window.location.href = "./";
+        });
+        buttonsElement.appendChild(yesButton);
+        buttonsElement.appendChild(noButton);
+      } else {
+        async function validateAndRedirect2() {
+          validateResult = await checkEmailAddresses(key);
+          if (validateResult === null) {
+            const messageElement = document.getElementById("message");
+            messageElement.textContent = "Invalid API Key Given";
+          } else {
+            // If validation is successful, overwrite apiKey and redirect
+            localStorage.setItem("apiKey", key);
+            window.location.href = "./";
+          }
+        }
+        validateAndRedirect2();
+      }
+
+    async function checkEmailAddresses(apiKey) {
+      const url = "https://proxy.cors.sh/https://quack.duckduckgo.com/api/email/addresses";
+      const requestInit = {
+          method: "POST",
+          cache: "no-store",
+          redirect: "manual",
+          headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+          "x-cors-api-key": 'KEY_HERE'
+          },
+      };
+      const response = await fetch(url, requestInit);
+      if (response.status === 401) {
+        return null;
+      }
     }
   </script>
 </body>
