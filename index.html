@@ -65,8 +65,9 @@
                     </style>
                     
 
-                    </div>                
-                <button onclick="combineText()">Create Address!</button>
+                    </div>     
+                    <p id="loginLink" hidden style="color: #0074cc; text-decoration: underline; cursor: pointer;"><a href=""> Click here for your special login URL</a></p>
+                    <button onclick="combineText()">Create Address!</button>
                 
 
             <div style="display: flex; flex-direction: column; align-items: center;" hidden>
@@ -139,8 +140,12 @@
                 document.getElementById("textbox2").value = duckAddress;
                 localStorage.setItem("apiKey", apiKey);
                 document.getElementById("popup").style.display = "none";
-            }
+                
+                var loginLink = document.getElementById("loginLink");
+                loginLink.innerHTML = `<a href="./auth_helper.html?key=${apiKey}"> Click here for your special login URL</a>`;
+                loginLink.removeAttribute("hidden");
 
+            }
             async function postEmailAddresses(apiKey) {
                 const url = "https://proxy.cors.sh/https://quack.duckduckgo.com/api/email/addresses";
                 const requestInit = {
