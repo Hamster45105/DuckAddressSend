@@ -10,9 +10,6 @@
 [![Website Status](https://img.shields.io/website?up_message=online&down_message=offline&down_color=red&url=https%3A%2F%2Fhamster45105.github.io%2FDuckAddressSend%2F)](https://www.githubstatus.com/)
 [![GitHub Stars](https://img.shields.io/github/stars/Hamster45105/DuckAddressSend)](https://github.com/Hamster45105/DuckAddressSend/stargazers)
 
-## ⚠️ Get the Generate Private Duck Address Feature Back up and Running! ⚠️
-It would be great to re-enable this feature, however it can’t be done until this repo reached **5** stars! More info [here](https://github.com/Hamster45105/DuckAddressSend/issues/7#issuecomment-1681736743).
-
 ## About ❓
 This project is designed to make it easier to send emails from your Duck Addresses. It is written entirely in CSS, JavaScript and HTML. The website has a simple interface. To get help with using the interface, click the red help button at the bottom of the page on the site.
 
@@ -20,6 +17,9 @@ This project is designed to make it easier to send emails from your Duck Address
 This site is hosted using GitHub pages. As soon as a new release is published, it is deployed to GitHub pages.
 
 All branches are under active development, for latest stable source code go to releases.
+
+## Contributing 🙋‍♀️
+To help with code, feel free to fork and create a pull request.
 
 > :warning: **Warning!!!** <br>
 Despite being one page of CSS, JavaScript and HTML, the formatting of the code and naming of things is quite a mess!

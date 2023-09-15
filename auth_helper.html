@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auth Helper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./styles/auth_help_style.css">
+</head>
+<body>
+    <script>
+        window.onload = function() {
+            // Get the value of the key parameter from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('key');
+            // If the code parameter is present, show a popup with its value
+            if (!code) {
+                const errorDiv = document.createElement('div');
+                errorDiv.classList.add('error');
+                errorDiv.textContent = 'No API key given!';
+                document.body.appendChild(errorDiv);
+            } else {
+                const popup = document.createElement('div');
+                popup.classList.add('popup');
+                const h2 = document.createElement('h2');
+                h2.textContent = 'Your special login URL';
+                popup.appendChild(h2);
+                const h3 = document.createElement('h3');
+                h3.style.textAlign = 'center';
+                const link = document.createElement('a');
+                link.href = 'https://github.com/Hamster45105/DuckAddressSend/wiki/Functions#special-login-url';
+                link.textContent = 'Find out how this works';
+                h3.appendChild(link);
+                popup.appendChild(h3);
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = 'https://hamster45105.github.io/DuckAddressSend/auth?key=' + code;
+                input.readOnly = true;
+                popup.appendChild(input);
+                const button = document.createElement('button');
+                button.textContent = 'Copy to clipboard';
+                button.addEventListener('click', function() {
+                    input.select();
+                    document.execCommand('copy');
+                    button.textContent = 'Copied!';
+                    button.style.backgroundColor = '#008000';
+                });
+                popup.appendChild(button);
+                document.body.appendChild(popup);
+            }
+        };
+    </script>
+</body>
+</html>
