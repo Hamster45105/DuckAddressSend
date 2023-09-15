@@ -228,6 +228,12 @@
                 showStarPopup();
                 document.getElementById("textbox1").value = "";
                 document.getElementById("textbox2").value = "";
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const resizeValue = urlParams.get('resize');
+                if (resizeValue === 'true') {
+                    textbox1.style.resize = 'vertical';
+                }
             }
             function closeErrorPopup() {
                 document.getElementById("errorPopup").style.display = "none";
