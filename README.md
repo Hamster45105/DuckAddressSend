@@ -18,12 +18,6 @@ This site is hosted using GitHub pages. As soon as a new release is published, i
 
 All branches are under active development, for latest stable source code go to releases.
 
-## Contributing 🙋‍♀️
-To help with code, feel free to fork and create a pull request.
-
-> :warning: **Warning!!!** <br>
-Despite being one page of CSS, JavaScript and HTML, the formatting of the code and naming of things is quite a mess!
-
 ## Does the website actually do anything special that I can't do myself? 🤔
 No, all it is doing is following the instructions found [here](https://duckduckgo.com/duckduckgo-help-pages/email-protection/duck-addresses/how-do-i-compose-a-new-email/) to create those special addresses.
 
@@ -40,6 +34,9 @@ To help with code, feel free to 🍴 and create a pull request.
 Found a 🐛? Open an issue with as much detail as possible.
 
 Just ❤️ the website? Give the repo a star!
+
+> :warning: **Warning!!!** <br>
+Despite being a couple of pages of CSS, JavaScript and HTML, the formatting of the code and naming of things is quite a mess!
 
 ## License 📜
 This repository is licenesed under the MIT License.
