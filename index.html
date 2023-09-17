@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>DDG Sending Generator | Send emails FROM your duck addresses</title>
+        <title>Duck Address Send | Send emails FROM your duck addresses</title>
+        <link rel="manifest" href="manifest.json" />
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./styles/style.css">
@@ -9,7 +10,7 @@
     </head>
     <body>
         <div class="container">
-            <h1>Duck Address Sending Generator 🦆</h1>
+            <h1>Duck Address Send🦆</h1>
             <h2><i>Send emails from your duck addresses</i></h2>
             <h3>Did you know that you can send FROM duck addresses? Use this tool to help you do it!</h3>
 
@@ -286,6 +287,10 @@
         textbox1.addEventListener("input", function() {
             decreaseTextAreaSize();
         });
+
+        if (typeof navigator.serviceWorker !== 'undefined') {
+            navigator.serviceWorker.register('sw.js')
+        }
         </script>
         </div>
     

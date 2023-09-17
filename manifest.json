@@ -1,0 +1,27 @@
+{
+  "background_color": "#ffffff",
+  "description": "A simple web tool to help you send emails FROM your duck addresses.\n\nIt is made with 💖 by Hamster45105",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Duck Address Send",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "DDG Send",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "categories": [
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "type": "image/x-icon"
+    }
+  ],
+  "id": "hamster45105.duckmail",
+  "lang": "en",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "prefer_related_applications": false
+}
