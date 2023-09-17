@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Duck Address Send | Send emails FROM your duck addresses</title>
-        <link rel="manifest" href="manifest.json" />
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./styles/style.css">
@@ -287,10 +286,6 @@
         textbox1.addEventListener("input", function() {
             decreaseTextAreaSize();
         });
-
-        if (typeof navigator.serviceWorker !== 'undefined') {
-            navigator.serviceWorker.register('sw.js')
-        }
         </script>
         </div>
     
