@@ -11,7 +11,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/Hamster45105/DuckAddressSend)](https://github.com/Hamster45105/DuckAddressSend/stargazers)
 
 ## About ❓
-This project is designed to make it easier to send emails from your Duck Addresses. It is written entirely in CSS, JavaScript and HTML. The website has a simple interface. To get help with using the interface, click the red help button at the bottom of the page on the site.
+This project is designed to make it easier to send emails from your Duck Addresses. It is written entirely in a couple of pages of CSS, JavaScript and HTML. The website has a simple interface. To get help with using the interface, click the red help button at the bottom of the page on the site.
 
 ## Code 👨‍💻
 This site is hosted using GitHub pages. As soon as a new release is published, it is deployed to GitHub pages.
