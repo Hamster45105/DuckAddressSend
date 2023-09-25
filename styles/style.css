@@ -1,8 +1,10 @@
+/* Default styles */
 body {
     background-color: #f2f2f2;
     font-family: Arial, sans-serif;
     padding: 20px;
 }
+
 label {
     font-size: 18px;
     font-weight: bold;
@@ -11,7 +13,10 @@ label {
     margin-bottom: 10px;
     display: block;
 }
-input[type="email"] {
+
+input[type="email"],
+textarea,
+input[type="text"] {
     font-family: 'Open Sans', sans-serif;
     padding: 10px;
     border-radius: 5px;
@@ -21,28 +26,13 @@ input[type="email"] {
     margin-bottom: 20px;
     width: 100%;
 }
+
 textarea {
-    font-family: 'Open Sans', sans-serif;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
-    margin-bottom: 20px;
-    width: 100%;
     resize: none;
     height: auto;
     padding-right: 0px;
 }
-input[type="text"] {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
-    margin: 0 auto 20px;
-    display: block;
-}
+
 input[type="password"] {
     padding: 10px;
     border: 2px solid #ccc;
@@ -50,11 +40,12 @@ input[type="password"] {
     font-size: 16px;
     outline: none;
 }
-  
-  input[type="password"]:focus {
+
+input[type="password"]:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px #007bff;
-  }
+}
+
 button {
     background-color: #4CAF50;
     color: white;
@@ -65,27 +56,89 @@ button {
     font-size: 18px;
     margin-top: 20px;
 }
+
 button:hover {
     background-color: #3e8e41;
 }
+
 h1 {
     font-size: 36px;
     color: #df5734;
     margin-bottom: 20px;
     text-align: center;
 }
-h2 {
+
+h2,
+h3 {
     font-size: 22px;
     color: #333;
     margin-bottom: 30px;
     text-align: center;
 }
-h3 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 30px;
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+#popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+#popup > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
     text-align: center;
 }
+
+#popup h2 {
+    font-size: 24px;
+}
+
+#popup p {
+    font-size: 16px;
+}
+
+#popupInput {
+    width: 90%;
+    padding: 10px;
+}
+
+#popup button {
+    background-color: #008CBA;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#popup button:nth-child(1) {
+    background-color: #008CBA;
+}
+
+#popup button:nth-child(2) {
+    background-color: #f44336;
+}
+
 #combinedText {
     font-size: 20px;
     font-weight: bold;
@@ -93,6 +146,7 @@ h3 {
     margin-top: 20px;
     text-align: center;
 }
+
 .container {
     max-width: 500px;
     margin: 0 auto;
@@ -101,17 +155,157 @@ h3 {
     padding: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 footer {
     margin-top: 50px;
     text-align: center;
     font-size: 14px;
     color: #999;
 }
+
 footer a {
     font-family: 'Roboto Mono', monospace;
     color: #999;
     text-decoration: none;
 }
+
 footer a:hover {
     color: #333;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #333;
+    color: #f2f2f2;
+}
+
+label.dark-mode {
+    color: #f2f2f2;
+}
+
+input[type="email"].dark-mode,
+textarea.dark-mode,
+input[type="text"].dark-mode,
+input[type="password"].dark-mode {
+    background-color: #444;
+    color: #f2f2f2;
+}
+
+input[type="password"].dark-mode {
+    border-color: #f2f2f2;
+}
+
+input[type="password"].dark-mode:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+}
+
+button.dark-mode {
+    background-color: #007bff;
+    color: #f2f2f2;
+}
+
+h1.dark-mode,
+h2.dark-mode,
+h3.dark-mode,
+#combinedText.dark-mode {
+    color: #f2f2f2;
+}
+
+.dark-mode #popup {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-mode #popup > div {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode #popup button {
+    background-color: #0077b6;
+}
+
+.dark-mode #popup button:nth-child(2) {
+    background-color: #fca311;
+}
+
+.container.dark-mode {
+    background-color: #444;
+    color: #f2f2f2;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+footer.dark-mode,
+footer a.dark-mode {
+    color: #f2f2f2;
+}
+
+footer a.dark-mode:hover {
+    color: #fff;
+    transition: color 0.3s;
+}
+
+/* Toggle button styles */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+}
+
+.toggle-btn input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-btn label {
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    background-color: #ccc;
+    border-radius: 34px;
+    position: relative;
+}
+
+.toggle-btn label:after {
+    content: "☀️";
+    display: block;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: 0.3s;
+    text-align: center;
+    line-height: 26px;
+    color: #333;
+}
+
+.toggle-btn input[type="checkbox"]:checked + label {
+    background-color: #333;
+}
+
+.toggle-btn input[type="checkbox"]:checked + label:after {
+    content: "🌕";
+    left: calc(100% - 4px);
+    transform: translateX(-100%);
+    color: #fff;
+}
+
+/* Dark mode styles for toggle button */
+body.dark-mode .toggle-btn label {
+    background-color: #555;
+}
+
+body.dark-mode .toggle-btn label:after {
+    color: #f2f2f2;
+}
+
+body.dark-mode .toggle-btn input[type="checkbox"]:checked + label {
+    background-color: #007bff;
+}
+
+body.dark-mode .toggle-btn input[type="checkbox"]:checked + label:after {
+    color: #f2f2f2;
 }
