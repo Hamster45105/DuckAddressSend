@@ -1,4 +1,4 @@
-# Duck Address Sender
+# Send From Duck
 
 [![GitHub Watchers](https://img.shields.io/github/watchers/Hamster45105/DuckAddressSend?style=social)](https://github.com/Hamster45105/DuckAddressSend/watchers)
 [![GitHub Stars](https://img.shields.io/github/stars/Hamster45105/DuckAddressSend?style=social)](https://github.com/Hamster45105/DuckAddressSend/stargazers)
