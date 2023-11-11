@@ -1,17 +1,32 @@
-name: Write Version to File
+name: Update Latest Version
+
 on:
   push:
     branches:
-      - main
+      - main  # Change to your default branch if needed
 
 jobs:
-  write-version:
+  update_latest_version:
     runs-on: ubuntu-latest
-    name: Write Version to File
+
     steps:
-    - uses: actions/checkout@master
-    - name: Update version
-      uses: brettdorrans/write-version-to-file@master
-      with:
-        filename: './VERSION'
-        placeholder: '${VERSION}'
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Get latest tag
+        id: latest_tag
+        run: |
+          git fetch --tags
+          latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+          echo "Latest Tag: $latest_tag" > latest_version.txt
+        shell: bash
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "your_email@example.com"
+          git config --global user.name "Your Name"
+          git add latest_version.txt
+          git commit -m "Update latest version"
+          git push
+        env:
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
