@@ -3,11 +3,11 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Enter the new version number (Without the "v" prefix)'
+        description: 'Enter new version number (Without the "v" prefix)'
         required: true
 
 jobs:
-  update_version:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
