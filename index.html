@@ -28,7 +28,7 @@
                     <div id="popup">
                         <div>
                             <h2>Generate Private Duck Address</h2>
-                            <p>Please enter your DuckDuckGo API key here. <a href='https://github.com/Hamster45105/DuckAddressSend/wiki/Get-DDG-API-Key'>Click here to find out how to get it.</a></p>
+                            <p>Enter your DuckDuckGo API key here. <a href='https://github.com/Hamster45105/DuckAddressSend/wiki/Get-DDG-API-Key'>Click here to find out how to get it.</a></p>
                             <input type="password" id="popupInput">
                             <div>
                                 <button onclick="closePopup()">Generate</button>
@@ -244,6 +244,17 @@
                 if (resizeValue === 'true') {
                     textbox1.style.resize = 'vertical';
                 }
+                fetch('latest_version.txt')
+                .then(response => response.text())
+                .then(data => {
+                    // Get the footer element
+                    let versionTextbox = document.getElementById('footer_version');
+                    // Set the footer text to the fetched text
+                    versionTextbox.textContent = 'Version ' + data;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
             }
             function closeErrorPopup() {
                 document.getElementById("errorPopup").style.display = "none";
@@ -322,8 +333,7 @@
     </div>
     <p>Made with 💖 by <a href="https://github.com/Hamster45105">Hamster45105</a></p>
     <p>Disclaimer: This website is not made by or an official service of DuckDuckGo in any way!</p>
-    <p style="font-size: 1.2em; font-weight: bold;"> <a href="https://github.com/Hamster45105/DuckAddressSend/releases/latest">Version 1.6.3</a></p>
-    </footer>
+    <p id="footer_version" style="font-size: 1.2em; font-weight: bold;"> <a href="https://github.com/Hamster45105/DuckAddressSend/releases/latest">Version --loading--</a></p>
             </body>
         </html>
     </body>

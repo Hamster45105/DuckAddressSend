@@ -1,0 +1,48 @@
+name: Release New Version
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Enter the new version number'
+        required: true
+
+jobs:
+  update_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Get version number
+        run: echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+
+      - name: Update version file
+        run: echo "$VERSION" > latest_version.txt
+
+      - name: Commit changes
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add latest_version.txt
+          git commit -m "Bump version to $VERSION"
+          git push
+
+      - name: Create new tag
+        run: |
+          git tag v$VERSION && git push origin v$VERSION
+
+      - name: Create new release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.VERSION }}
+          release_name: Release ${{ env.VERSION }}
+          body: 'Release notes coming soon'
+      
+      - name: Trigger release workflow
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          event-type: trigger-pages-deploy
