@@ -1,39 +1,33 @@
-name: Update Latest Version
-
+name: Update version
 on:
-  workflow_dispatch:  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Enter the new version number'
+        required: true
 
 jobs:
-    update_text_file:
-        runs-on: ubuntu-latest
-    
-        steps:
-          - name: Check out code
-            uses: actions/checkout@v2
-    
-          - name: Ask for version number
-            id: version
-            run: |
-              read -p "Enter the new version number: " version
-              echo "VERSION=$version" >> $GITHUB_ENV
-    
-          - name: Get latest tag
-            id: latest_tag
-            run: |
-              latest_tag=$VERSION
-              echo "$latest_tag" > latest_version.txt
-            shell: bash
-    
-          - name: Create new tag
-            run: |
-              git tag $VERSION
-    
-          - name: Commit and push changes
-            run: |
-              git config --global user.email "github-actions[bot]@users.noreply.github.com"
-              git config --global user.name "github-actions[bot]"
-              git add latest_version.txt
-              git commit -m "Update latest version"
-              git push --tags
-            env:
-              AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+  update_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Get version number
+        run: echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+
+      - name: Update version file
+        run: echo "$VERSION" > latest_version.txt
+
+      - name: Create new tag
+        run: git tag $VERSION
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add latest_version.txt
+          git commit -m "Update latest version"
+          git push --tags
+        env:
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
