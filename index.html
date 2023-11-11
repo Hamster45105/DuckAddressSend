@@ -178,6 +178,7 @@
                 document.getElementById("mailButton").setAttribute("hidden", true);
                 document.getElementById("error-message").innerHTML = errorMessage;
                 document.getElementById("errorPopup").style.display = "block";
+                document.getElementById("popupInput").blur();
             }
             
             async function closePopup() {
@@ -201,7 +202,6 @@
                 var loginLink = document.getElementById("loginLink");
                 loginLink.innerHTML = `<a href="./auth_helper.html?key=${apiKey}"> Click here for your special login URL</a>`;
                 loginLink.removeAttribute("hidden");
-
             }
             async function postEmailAddresses(apiKey) {
                 const url = "https://corsproxy.io/?https://quack.duckduckgo.com/api/email/addresses";
@@ -247,7 +247,12 @@
             }
             function closeErrorPopup() {
                 document.getElementById("errorPopup").style.display = "none";
-                document.getElementById(errorTextbox).focus();
+                // check if popup is open
+                if (document.getElementById("popup").style.display === "block") {
+                    document.getElementById("popupInput").focus();
+                } else {
+                    document.getElementById(errorTextbox).focus();
+                }
                 decreaseTextAreaSize();
             }
             function increaseTextAreaSize() {
@@ -286,9 +291,8 @@
                         }, 0);
                     
                 }
-                if (popup.style.display === "block") {
-                    event.preventDefault();
-                    popup.style.display = "none";
+                if (document.activeElement === document.getElementById("popupInput")) {
+                    closePopup();
                 }
                 if (document.activeElement === document.getElementById("textbox2")) {
                     combineText();
