@@ -39,7 +39,7 @@ Just ❤️ the website? Give the repo a star!
 Despite being a couple of pages of CSS, JavaScript and HTML, the formatting of the code and naming of things is quite a mess!
 
 ## License 📜
-This repository is licenesed under the MIT License.
+This repository is licenesed under the **MIT License**.
 
 In a Nutshell: The MIT License lets you use, tweak, and share software freely, but you need to give credit to the original creators by including the license when you use their stuff.
 
