@@ -247,10 +247,8 @@
                 fetch('latest_version.txt')
                 .then(response => response.text())
                 .then(data => {
-                    // Get the footer element
                     let versionTextbox = document.getElementById('footer_version');
-                    // Set the footer text to the fetched text
-                    versionTextbox.textContent = 'Version ' + data;
+                    versionTextbox.innerHTML = `<a href="https://github.com/Hamster45105/DuckAddressSend/releases/tag/v` + data + `">Version ` + data + `</a>`;
                 })
                 .catch((error) => {
                     console.error('Error:', error);
