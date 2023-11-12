@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: "## Welcome!"
-  - type: markdown:
+  - type: markdown
     atttributes: 
       value: "Thanks for filling out this bug report. Please try and provide as much detail as possible."
   - type: input
