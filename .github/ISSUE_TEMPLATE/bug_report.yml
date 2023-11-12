@@ -6,7 +6,7 @@ body:
     attributes:
       value: "## Welcome!"
   - type: markdown
-    atttributes: 
+    attributes:
       value: "Thanks for filling out this bug report. Please try and provide as much detail as possible."
   - type: input
     id: device
@@ -19,21 +19,21 @@ body:
     id: version
     attributes:
       label: Version
-      description: What version of the website does this occur on? (Check bottom of page).
+      description: What version of the website does this occur on? (Check the bottom of the page).
     validations:
       required: true
   - type: textarea
     id: description
     attributes:
       label: Description of Bug
-      description: "Explain what the bug is causing AND what you expect to happen"
+      description: Explain what the bug is causing AND what you expect to happen
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
       label: Steps to reproduce
-      description: "How did you get to this bug? Provide steps and a screenshot if necessary."
+      description: How did you get to this bug? Provide steps and a screenshot if necessary.
       value: |
         1.
         2.
@@ -55,6 +55,6 @@ body:
     id: comments
     attributes:
       label: Comments
-      description: "Provide any last comments if necessary."
+      description: Provide any last comments if necessary.
     validations:
       required: false
