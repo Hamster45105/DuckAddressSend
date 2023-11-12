@@ -19,7 +19,7 @@ body:
     id: version
     attributes:
       label: Version
-      description: What version of the website does this occur on? (Check the bottom of the page).
+      description: What version of the website does this occur on? (Check the bottom of the website).
     validations:
       required: true
   - type: textarea
@@ -49,6 +49,7 @@ body:
         - Official GitHub Pages
         - Running Locally
         - Off A Fork
+        - Something Else (Specify in comments section below)
     validations:
       required: true
   - type: textarea
