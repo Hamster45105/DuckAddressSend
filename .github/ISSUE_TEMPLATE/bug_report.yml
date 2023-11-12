@@ -13,6 +13,7 @@ body:
     attributes:
       label: Device Details
       description: What device and browser did you experience the issue on?
+      placeholder: Safari v123, MacOS 1.23
     validations:
       required: true
   - type: input
@@ -20,13 +21,15 @@ body:
     attributes:
       label: Version
       description: What version of the website does this occur on? (Check the bottom of the website).
+      placeholder: Version 1.2.3
     validations:
       required: true
   - type: textarea
     id: description
     attributes:
       label: Description of Bug
-      description: Explain what the bug is causing AND what you expect to happen
+      description: Explain what the bug is causing AND what you expect to happen.
+      placeholder: Button is not working, when clicked it should open another page.
     validations:
       required: true
   - type: textarea
