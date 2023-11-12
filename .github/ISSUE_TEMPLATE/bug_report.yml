@@ -7,8 +7,7 @@ body:
       value: "## Welcome!"
   - type: markdown
     atttributes: 
-      value: | 
-      Thanks for filling out this bug report. Please try and provide as much detail as possible.
+      value: "Thanks for filling out this bug report. Please try and provide as much detail as possible."
   - type: input
     id: device
     attributes:
