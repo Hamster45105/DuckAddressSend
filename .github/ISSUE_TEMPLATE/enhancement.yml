@@ -1,0 +1,53 @@
+name: Enhancement Request
+description: Suggest an idea for a SMALL IMPROVEMENT for the website
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: "## Welcome!"
+  - type: markdown
+    attributes:
+      value: "Thanks for filling out this enhancement request. Please provide as much detail as possible."
+  - type: markdown
+    attributes:
+      value: "*Remember:* This form is to **suggest a SMALL IMPROVEMENT for the website. Use the feature reqest form for larger changes.**"
+  - type: input
+    id: enhancement
+    attributes:
+      label: Enhancement Details
+      description: What feature would you like to enhance?
+    validations:
+      required: true
+  - type: textarea
+    id: benefit
+    attributes:
+      label: Benefit of Enhancement
+      description: Explain how this enhancement would benefit users of the project.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Suggested Implementation
+      description: If you have an idea on how this enhancement can be implemented, please share it here.
+      placeholder: The feature can be implemented by...
+    validations:
+      required: false
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Importance
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
+    validations:
+      required: true
+  - type: textarea
+    id: comments
+    attributes:
+      label: Additional Comments
+      description: Provide any additional comments or details if necessary.
+    validations:
+      required: false

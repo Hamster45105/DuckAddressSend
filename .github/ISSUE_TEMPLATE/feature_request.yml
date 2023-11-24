@@ -1,0 +1,53 @@
+name: Feature Request
+description: Suggest a brand new feature for the website
+labels: ["feature request"]
+body:
+  - type: markdown
+    attributes:
+      value: "## Welcome!"
+  - type: markdown
+    attributes:
+      value: "Thanks for filling out this feature request. Please provide as much detail as possible."
+  - type: markdown
+    attributes:
+      value: "*Remember:* This form is to **suggest a BRAND NEW idea for the website. Use the enhancement reqest form for smaller changes.**"
+  - type: input
+    id: feature
+    attributes:
+      label: Feature Details
+      description: What feature would you like to suggest?
+    validations:
+      required: true
+  - type: textarea
+    id: benefit
+    attributes:
+      label: Benefit of Feature
+      description: Explain how this feature would benefit users of the project.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Suggested Implementation
+      description: If you have an idea on how this feature can be implemented, please share it here.
+      placeholder: The feature can be implemented by...
+    validations:
+      required: false
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Importance
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
+    validations:
+      required: true
+  - type: textarea
+    id: comments
+    attributes:
+      label: Additional Comments
+      description: Provide any additional comments or details if necessary.
+    validations:
+      required: false

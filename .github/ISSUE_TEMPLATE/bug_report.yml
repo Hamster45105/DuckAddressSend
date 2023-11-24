@@ -45,6 +45,17 @@ body:
     validations:
       required: true
   - type: dropdown
+    id: urgency
+    attributes:
+      label: Importance
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
+    validations:
+      required: true
+  - type: dropdown
     id: access
     attributes:
       label: How are you accessing the webpage?
