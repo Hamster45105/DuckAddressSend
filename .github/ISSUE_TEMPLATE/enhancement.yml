@@ -1,5 +1,5 @@
 name: Enhancement Request
-description: Suggest an idea for a SMALL IMPROVEMENT for the website
+description: Suggest an idea for a small improvement for the website
 labels: ["enhancement"]
 body:
   - type: markdown
