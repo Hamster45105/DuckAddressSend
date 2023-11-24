@@ -66,7 +66,7 @@
                     
 
                     </div>     
-                    <p id="loginLink" hidden style="color: #0074cc; text-decoration: underline; cursor: pointer;"><a href=""> Click here for your special login URL</a></p>
+                    <p id="loginLink" hidden style="color: #0074cc; text-decoration: underline; cursor: pointer;"><a href="" target='_blank'> Click here for your special login URL</a></p>
                     <button onclick="combineText()">Create Address!</button>
                 
 
@@ -200,7 +200,7 @@
                 document.getElementById("popup").style.display = "none";
                 
                 var loginLink = document.getElementById("loginLink");
-                loginLink.innerHTML = `<a href="./auth_helper.html?key=${apiKey}"> Click here for your special login URL</a>`;
+                loginLink.innerHTML = `<a href="./auth_helper.html?key=${apiKey}" target='_blank'> Click here for your special login URL</a>`;
                 loginLink.removeAttribute("hidden");
             }
             async function postEmailAddresses(apiKey) {
@@ -248,7 +248,7 @@
                 .then(response => response.text())
                 .then(data => {
                     let versionTextbox = document.getElementById('footer_version');
-                    versionTextbox.innerHTML = `<a href="https://github.com/Hamster45105/DuckAddressSend/releases/tag/v` + data + `">Version ` + data + `</a>`;
+                    versionTextbox.innerHTML = `<a href="https://github.com/Hamster45105/DuckAddressSend/releases/tag/v` + data + `" target='_blank'>Version ` + data + `</a>`;                
                 })
                 .catch((error) => {
                     console.error('Error:', error);
@@ -325,13 +325,12 @@
         </div>
     
     <footer>
-    <button onclick="window.location.href='https://github.com/Hamster45105/DuckAddressSend/wiki'" style="border-radius: 55px; background-color: #ff4d4d;">HELP!</button>
-    <div style="margin-top: 10px;">
+        <button onclick="window.open('https://github.com/Hamster45105/DuckAddressSend/wiki', '_blank')" style="border-radius: 55px; background-color: #ff4d4d;">HELP!</button>    <div style="margin-top: 10px;">
         <a href="https://github.com/Hamster45105/DuckAddressSend" target="_blank"><img src="https://img.shields.io/github/stars/Hamster45105/DuckAddressSend?style=social" alt="GitHub"></a>
     </div>
-    <p>Made with 💖 by <a href="https://github.com/Hamster45105">Hamster45105</a></p>
+    <p>Made with 💖 by <a href="https://github.com/Hamster45105" target='_blank'>Hamster45105</a></p>
     <p>Disclaimer: This website is not made by or an official service of DuckDuckGo in any way!</p>
-    <p id="footer_version" style="font-size: 1.2em; font-weight: bold;"> <a href="https://github.com/Hamster45105/DuckAddressSend/releases/latest">Version --loading--</a></p>
+    <p id="footer_version" style="font-size: 1.2em; font-weight: bold;"> <a href="https://github.com/Hamster45105/DuckAddressSend/releases/latest" target='_blank'>Version --loading--</a></p>
             </body>
         </html>
     </body>
