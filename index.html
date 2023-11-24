@@ -7,6 +7,12 @@
         <link rel="stylesheet" href="./styles/style.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
+    <header id="sticky-header">
+        <div class="toggle-btn">
+            <input type="checkbox" id="toggle" />
+            <label for="toggle"></label>
+          </div>
+    </header>
     <body>
         <div class="container">
             <h1>Send From Duck 🦆</h1>
@@ -78,10 +84,7 @@
                 <button id="copyButton" onclick="copyToClipboard()" style="margin-top: 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; text-align: center;" hidden>Copy to Clipboard</button>
                 <button id="mailButton" onclick="sendEmail()" style="margin-top: 20px; margin-left: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; text-align: center;" hidden>Open in Mail</button>
             </div>
-            <div class="toggle-btn">
-                <input type="checkbox" id="toggle" />
-                <label for="toggle"></label>
-              </div>
+            
         </div>
         <script>
             let result;
