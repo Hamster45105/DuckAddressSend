@@ -63,3 +63,33 @@ body {
         font-size: 16px;
     }
 }
+
+/* Dark mode */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .popup {
+    background-color: #444;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .popup input {
+    background-color: #555;
+    color: #fff;
+    border-color: #777;
+}
+
+body.dark-mode .popup button {
+    background-color: #fff;
+    color: #000;
+}
+
+body.dark-mode .popup button:hover {
+    background-color: #ddd;
+}
+
+body.dark-mode .error {
+    color: #ff4f4f;
+}

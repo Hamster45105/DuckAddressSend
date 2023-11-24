@@ -14,7 +14,14 @@
   </div>
   <script>
     let validateResult;
-
+    // Check if the user has dark mode enabled
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      // Add the dark-mode class to the body element
+      const elements = document.querySelectorAll("*");
+      elements.forEach(function(element) {
+          element.classList.toggle("dark-mode");
+      });
+    }
     // get key value from URL
     const urlParams = new URLSearchParams(window.location.search);
     const key = urlParams.get("key");
