@@ -28,7 +28,7 @@
                     <div id="popup">
                         <div>
                             <h2>Generate Private Duck Address</h2>
-                            <p>Enter your DuckDuckGo API key here. <a href='https://github.com/Hamster45105/DuckAddressSend/wiki/Get-DDG-API-Key'>Click here to find out how to get it.</a></p>
+                            <p>Enter your DuckDuckGo API key here. <a href='https://github.com/Hamster45105/DuckAddressSend/wiki/Get-DDG-API-Key' target='_blank'>Click here to find out how to get it.</a></p>
                             <input type="password" id="popupInput">
                             <div>
                                 <button onclick="closePopup()">Generate</button>
@@ -247,10 +247,8 @@
                 fetch('latest_version.txt')
                 .then(response => response.text())
                 .then(data => {
-                    // Get the footer element
                     let versionTextbox = document.getElementById('footer_version');
-                    // Set the footer text to the fetched text
-                    versionTextbox.textContent = 'Version ' + data;
+                    versionTextbox.innerHTML = `<a href="https://github.com/Hamster45105/DuckAddressSend/releases/tag/v` + data + `">Version ` + data + `</a>`;
                 })
                 .catch((error) => {
                     console.error('Error:', error);

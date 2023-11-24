@@ -1,0 +1,64 @@
+name: Bug Report
+description: Found an issue or problem? Report it here
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "## Welcome!"
+  - type: markdown
+    attributes:
+      value: "Thanks for filling out this bug report. Please try and provide as much detail as possible."
+  - type: input
+    id: device
+    attributes:
+      label: Device Details
+      description: What device and browser did you experience the issue on?
+      placeholder: Safari v123, MacOS 1.23
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of the website does this occur on? (Check the bottom of the website).
+      placeholder: Version 1.2.3
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of Bug
+      description: Explain what the bug is causing AND what you expect to happen.
+      placeholder: Button is not working, when clicked it should open another page.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: How did you get to this bug? Provide steps and a screenshot if necessary.
+      value: |
+        1.
+        2.
+        3.
+        ...
+    validations:
+      required: true
+  - type: dropdown
+    id: access
+    attributes:
+      label: How are you accessing the webpage?
+      options:
+        - Official GitHub Pages
+        - Running Locally
+        - Off A Fork
+        - Something Else (Specify in comments section below)
+    validations:
+      required: true
+  - type: textarea
+    id: comments
+    attributes:
+      label: Comments
+      description: Provide any last comments if necessary.
+    validations:
+      required: false

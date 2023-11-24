@@ -14,7 +14,7 @@
 This project is designed to make it easier to send emails from your Duck Addresses. It is written entirely in a couple of pages of CSS, JavaScript and HTML. The website has a simple interface. To get help with using the interface, click the red help button at the bottom of the page on the site (this will take you to the wiki).
 
 ## Code 👨‍💻
-This site is hosted using GitHub pages. As soon as a new release is published, it is deployed to GitHub pages.
+New releases are deployed by a manually run action. When run, the version number will be updated and the updated site deployed on GitHub pages.
 
 All branches are under active development, for latest stable source code go to releases.
 
@@ -39,7 +39,7 @@ Just ❤️ the website? Give the repo a star!
 Despite being a couple of pages of CSS, JavaScript and HTML, the formatting of the code and naming of things is quite a mess!
 
 ## License 📜
-This repository is licenesed under the MIT License.
+This repository is licenesed under the **MIT License**.
 
 In a Nutshell: The MIT License lets you use, tweak, and share software freely, but you need to give credit to the original creators by including the license when you use their stuff.
 
