@@ -280,9 +280,6 @@
                     }, 10000);
                 }
 
-                document.getElementById('dismissButton').addEventListener('click', function() {
-                    document.getElementById('importBanner').style.opacity = '0';
-                });
                 fetch('latest_version.txt')
                 .then(response => response.text())
                 .then(data => {
