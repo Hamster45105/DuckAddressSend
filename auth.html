@@ -45,23 +45,46 @@
         yesButton.style.marginRight = "10px";        
         yesButton.textContent = "Yes";
         yesButton.addEventListener("click", function() {
-            async function validateAndRedirect1() {
-              validateResult = await checkEmailAddresses(key);
-              if (validateResult === null) {
-                const messageElement = document.getElementById("message");
-                messageElement.textContent = "Invalid API key Given";
-                const buttonsElement = document.getElementById("buttons");
-                buttonsElement.remove();
-              } else {
-                // If validation is successful, overwrite apiKey and redirect
-                localStorage.setItem("loginAddress", validateResult.address);
-                localStorage.setItem("loginAddressKey", key);
-                localStorage.setItem("apiKey", key);
+          // Remove buttons
+          buttonsElement.remove();
+
+          // Show loading message
+          messageElement.textContent = "Loading...";
+
+          async function validateAndRedirect1() {
+            validateResult = await checkEmailAddresses(key);
+            if (validateResult === null) {
+              messageElement.textContent = "Invalid API key Given";
+
+              // Add "Go back" button
+              const goBackButton = document.createElement("button");
+              goBackButton.textContent = "Go back";
+              goBackButton.addEventListener("click", function() {
+                // redirect back to index.html
                 window.location.href = "./";
-              }
+              });
+
+              // Create a div to hold the button
+              const buttonDiv = document.createElement("div");
+              buttonDiv.style.display = "flex";
+              buttonDiv.style.justifyContent = "center";
+              buttonDiv.style.marginTop = "20px";
+
+              // Append the button to the div
+              buttonDiv.appendChild(goBackButton);
+
+              // Append the div to the body
+              document.body.appendChild(buttonDiv);
+            } else {
+              // If validation is successful, overwrite apiKey and redirect
+              localStorage.setItem("loginAddress", validateResult.address);
+              localStorage.setItem("loginAddressKey", key);
+              localStorage.setItem("apiKey", key);
+              window.location.href = "./";
             }
-            validateAndRedirect1();
-          });
+          }
+          validateAndRedirect1();
+        });
         const noButton = document.createElement("button");
         noButton.style.backgroundColor = "red";
         noButton.style.marginLeft = "10px";
@@ -78,6 +101,26 @@
           if (validateResult === null) {
             const messageElement = document.getElementById("message");
             messageElement.textContent = "Invalid API key Given";
+
+            // Add "Go back" button
+            const goBackButton = document.createElement("button");
+            goBackButton.textContent = "Go back";
+            goBackButton.addEventListener("click", function() {
+              // redirect back to index.html
+              window.location.href = "./";
+            });
+
+            // Create a div to hold the button
+            const buttonDiv = document.createElement("div");
+            buttonDiv.style.display = "flex";
+            buttonDiv.style.justifyContent = "center";
+            buttonDiv.style.marginTop = "20px";
+
+            // Append the button to the div
+            buttonDiv.appendChild(goBackButton);
+
+            // Append the div to the body
+            document.body.appendChild(buttonDiv);
           } else {
             // If validation is successful, write apiKey and redirect
             localStorage.setItem("loginAddress", validateResult.address);
@@ -86,9 +129,7 @@
             window.location.href = "./";
           }
         }
-        validateAndRedirect2();
       }
-
     async function checkEmailAddresses(apiKey) {
       const url = "https://corsproxy.io/?https://quack.duckduckgo.com/api/email/addresses";
       const requestInit = {
