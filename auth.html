@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <title>Send From Duck | API Key Check</title>
     <link rel="stylesheet" href="./styles/auth_style.css" />
-    <title>Authorization</title>
   </head>
   <body>
     <div class="container">
@@ -13,150 +12,44 @@
       <div id="buttons"></div>
     </div>
     <script>
-      let validateResult;
-      // Check if the user has dark mode enabled
-      if (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      ) {
-        // Add the dark-mode class to the body element
-        const elements = document.querySelectorAll("*");
-        elements.forEach(function (element) {
-          element.classList.toggle("dark-mode");
-        });
-      }
-      // get key value from URL
       const urlParams = new URLSearchParams(window.location.search);
       const key = urlParams.get("key");
-
-      // get apiKey value from localStorage
       const apiKey = localStorage.getItem("apiKey");
-      // check if apiKey is the same as key
-      if (apiKey === key) {
-        // redirect back to index.html
-        const imported = urlParams.get('imported');
+      const messageElement = document.getElementById("message");
+      const buttonsElement = document.getElementById("buttons");
 
-        if (imported === 'true') {
-          window.location.href = "./index.html?imported=true";
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.querySelectorAll("*").forEach(element => element.classList.toggle("dark-mode"));
+      }
+
+      function redirect(imported) {
+        window.location.href = imported === 'true' ? "./index.html?imported=true" : "./";
+      }
+
+      function createButton(text, color, margin, clickHandler) {
+        const button = document.createElement("button");
+        button.style.backgroundColor = color;
+        button.style[margin] = "10px";
+        button.textContent = text;
+        button.addEventListener("click", clickHandler);
+        return button;
+      }
+
+      async function validateAndRedirect() {
+        const validateResult = await checkEmailAddresses(key);
+        if (validateResult === null) {
+          messageElement.textContent = "Invalid API key Given";
+          document.body.appendChild(createButton("Go back", "", "", () => redirect()));
         } else {
-          window.location.href = "./";
-        }
-      } else if (!key) {
-        const messageElement = document.getElementById("message");
-        messageElement.textContent = "No API key given";
-      } else if (apiKey) {
-        // add buttons for overwriting apiKey
-        const messageElement = document.getElementById("message");
-        messageElement.textContent =
-          "Do you want to overwrite your previous API key?";
-        const buttonsElement = document.getElementById("buttons");
-        const yesButton = document.createElement("button");
-        yesButton.style.backgroundColor = "green";
-        yesButton.style.marginRight = "10px";
-        yesButton.textContent = "Yes";
-        yesButton.addEventListener("click", function () {
-          // Remove buttons
-          buttonsElement.remove();
-
-          // Show loading message
-          messageElement.textContent = "Loading...";
-
-          async function validateAndRedirect1() {
-            validateResult = await checkEmailAddresses(key);
-            if (validateResult === null) {
-              messageElement.textContent = "Invalid API key Given";
-
-              // Add "Go back" button
-              const goBackButton = document.createElement("button");
-              goBackButton.textContent = "Go back";
-              goBackButton.addEventListener("click", function () {
-                // redirect back to index.html
-                window.location.href = "./";
-              });
-
-              // Create a div to hold the button
-              const buttonDiv = document.createElement("div");
-              buttonDiv.style.display = "flex";
-              buttonDiv.style.justifyContent = "center";
-              buttonDiv.style.marginTop = "20px";
-
-              // Append the button to the div
-              buttonDiv.appendChild(goBackButton);
-
-              // Append the div to the body
-              document.body.appendChild(buttonDiv);
-            } else {
-              // If validation is successful, overwrite apiKey and redirect
-              localStorage.setItem("loginAddress", validateResult.address);
-              localStorage.setItem("loginAddressKey", key);
-              localStorage.setItem("apiKey", key);
-              const urlParams = new URLSearchParams(window.location.search);
-              const imported = urlParams.get('imported');
-
-              if (imported === 'true') {
-                window.location.href = "./index.html?imported=true";
-              } else {
-                window.location.href = "./";
-              }
-            }
-          }
-          validateAndRedirect1();
-        });
-        const noButton = document.createElement("button");
-        noButton.style.backgroundColor = "red";
-        noButton.style.marginLeft = "10px";
-        noButton.textContent = "No";
-        noButton.addEventListener("click", function () {
-          // redirect back to index.html
-          window.location.href = "./";
-        });
-        buttonsElement.appendChild(yesButton);
-        buttonsElement.appendChild(noButton);
-      } else {
-        async function validateAndRedirect2() {
-          validateResult = await checkEmailAddresses(key);
-          if (validateResult === null) {
-            const messageElement = document.getElementById("message");
-            messageElement.textContent = "Invalid API key Given";
-
-            // Add "Go back" button
-            const goBackButton = document.createElement("button");
-            goBackButton.textContent = "Go back";
-            goBackButton.addEventListener("click", function () {
-              // redirect back to index.html
-              window.location.href = "./";
-            });
-
-            // Create a div to hold the button
-            const buttonDiv = document.createElement("div");
-            buttonDiv.style.display = "flex";
-            buttonDiv.style.justifyContent = "center";
-            buttonDiv.style.marginTop = "20px";
-
-            // Append the button to the div
-            buttonDiv.appendChild(goBackButton);
-
-            // Append the div to the body
-            document.body.appendChild(buttonDiv);
-          } else {
-            // If validation is successful, write apiKey and redirect
-            localStorage.setItem("loginAddress", validateResult.address);
-            localStorage.setItem("loginAddressKey", key);
-            localStorage.setItem("apiKey", key);
-            const urlParams = new URLSearchParams(window.location.search);
-            const imported = urlParams.get('imported');
-
-            if (imported === 'true') {
-              window.location.href = "./index.html?imported=true";
-            } else {
-              window.location.href = "./";
-            }
-          }
+          localStorage.setItem("loginAddress", validateResult.address);
+          localStorage.setItem("loginAddressKey", key);
+          localStorage.setItem("apiKey", key);
+          redirect(urlParams.get('imported'));
         }
       }
+
       async function checkEmailAddresses(apiKey) {
-        const url =
-          "https://corsproxy.io/?https://quack.duckduckgo.com/api/email/addresses";
+        const url = "https://corsproxy.io/?https://quack.duckduckgo.com/api/email/addresses";
         const requestInit = {
           method: "POST",
           headers: {
@@ -166,11 +59,24 @@
           },
         };
         const response = await fetch(url, requestInit);
-        if (response.status === 401) {
-          return null;
+        return response.status === 401 ? null : await response.json();
+      }
+
+      if (apiKey === key) {
+        redirect(urlParams.get('imported'));
+      } else if (!key) {
+        messageElement.textContent = "No API key given";
+      } else {
+        messageElement.textContent = apiKey ? "Do you want to overwrite your previous API key?" : "Invalid API key Given";
+        if (apiKey) {
+          buttonsElement.appendChild(createButton("Yes", "green", "marginRight", () => {
+            buttonsElement.remove();
+            messageElement.textContent = "Loading...";
+            validateAndRedirect();
+          }));
+          buttonsElement.appendChild(createButton("No", "red", "marginLeft", () => redirect()));
         } else {
-          const json = await response.json();
-          return json;
+          validateAndRedirect();
         }
       }
     </script>
