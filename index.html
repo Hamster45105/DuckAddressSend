@@ -37,7 +37,7 @@
                             <p>Enter your DuckDuckGo API key here. <a href='https://github.com/Hamster45105/DuckAddressSend/wiki/Get-DDG-API-Key' target='_blank'>Click here to find out how to get it.</a></p>
                             <input type="password" id="popupInput">
                             <div>
-                                <button onclick="closePopup()">Generate</button>
+                                <button id="generateButton" onclick="closePopup()">Generate</button>
                                 <button onclick="document.getElementById('popup').style.display = 'none';">Cancel</button>
                             </div>
                         </div>
@@ -190,6 +190,12 @@
                 const cookieValue = localStorage.getItem("loginAddress");
                 const generatedKey = localStorage.getItem("loginAddressKey");
                 const apiKey = document.getElementById("popupInput").value;
+                const button = document.getElementById("generateButton")
+
+                button.textContent = "Generating...";
+                button.disabled = true;
+                button.style.backgroundColor = "#808080";
+                
                 if (cookieValue !== null && generatedKey == apiKey) {
                     emailAddresses = cookieValue;
                     localStorage.removeItem("loginAddress");
@@ -198,8 +204,12 @@
                     emailAddresses = await postEmailAddresses(apiKey);
                     duckAddress = emailAddresses.address + "@duck.com";
                 }
+                
                 document.getElementById("textbox2").value = duckAddress;
                 localStorage.setItem("apiKey", apiKey);
+                button.textContent = "Generate";
+                button.disabled = false;
+                button.style.backgroundColor = "#007bff";
                 document.getElementById("popup").style.display = "none";
                 
                 var loginLink = document.getElementById("loginLink");
@@ -208,6 +218,8 @@
             }
             async function postEmailAddresses(apiKey) {
                 const url = "https://corsproxy.io/?https://quack.duckduckgo.com/api/email/addresses";
+                const button = document.getElementById("generateButton")
+
                 const requestInit = {
                     method: "POST",
                     headers: {
@@ -219,6 +231,9 @@
                 const response = await fetch(url, requestInit);
                 if (response.status === 401) {
                     openErrorPopup("Invalid DuckDuckGo API Key!");
+                    button.textContent = "Generate";
+                    button.disabled = false;
+                    button.style.backgroundColor = "#007bff";
                     return null;
                 }
                 const json = await response.json();
