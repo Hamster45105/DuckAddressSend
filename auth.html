@@ -34,7 +34,13 @@
       // check if apiKey is the same as key
       if (apiKey === key) {
         // redirect back to index.html
-        window.location.href = "./";
+        const imported = urlParams.get('imported');
+
+        if (imported === 'true') {
+          window.location.href = "./index.html?imported=true";
+        } else {
+          window.location.href = "./";
+        }
       } else if (!key) {
         const messageElement = document.getElementById("message");
         messageElement.textContent = "No API key given";
@@ -84,7 +90,14 @@
               localStorage.setItem("loginAddress", validateResult.address);
               localStorage.setItem("loginAddressKey", key);
               localStorage.setItem("apiKey", key);
-              window.location.href = "./";
+              const urlParams = new URLSearchParams(window.location.search);
+              const imported = urlParams.get('imported');
+
+              if (imported === 'true') {
+                window.location.href = "./index.html?imported=true";
+              } else {
+                window.location.href = "./";
+              }
             }
           }
           validateAndRedirect1();
@@ -130,7 +143,14 @@
             localStorage.setItem("loginAddress", validateResult.address);
             localStorage.setItem("loginAddressKey", key);
             localStorage.setItem("apiKey", key);
-            window.location.href = "./";
+            const urlParams = new URLSearchParams(window.location.search);
+            const imported = urlParams.get('imported');
+
+            if (imported === 'true') {
+              window.location.href = "./index.html?imported=true";
+            } else {
+              window.location.href = "./";
+            }
           }
         }
       }

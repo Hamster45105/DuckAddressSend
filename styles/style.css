@@ -189,6 +189,13 @@ a:hover {
     }
 }
 
+@media screen and (max-width: 600px) {
+    #importBanner {
+      right: 0;
+      bottom: 0;
+    }
+  }
+
 #combinedText {
     font-size: 20px;
     font-weight: bold;
