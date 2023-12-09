@@ -42,7 +42,7 @@
         const validateResult = await checkEmailAddresses(key);
         if (validateResult === null) {
           messageElement.textContent = "Invalid API key Given";
-          document.body.appendChild(createButton("Go back", "", "", () => redirect()));
+          document.body.appendChild(createButton("Go home", "", "", () => redirect()));
         } else {
           localStorage.setItem("loginAddress", validateResult.address);
           localStorage.setItem("loginAddressKey", key);
