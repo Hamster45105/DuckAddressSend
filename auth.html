@@ -29,9 +29,12 @@
       function createButton(text, color, margin, clickHandler) {
         const button = document.createElement("button");
         button.style.backgroundColor = color;
-        button.style[margin] = "10px";
         button.textContent = text;
         button.addEventListener("click", clickHandler);
+
+        button.style.display = 'block';
+        button.style.margin = '10px auto';
+
         return button;
       }
 
