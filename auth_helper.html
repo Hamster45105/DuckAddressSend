@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="./styles/auth_help_style.css">
 </head>
 <body>
+    <div id="errorDiv" class="error" style="display: none;">No API key given!</div>
+    <div id="popup" class="popup" style="display: none;">
+        <h2>Your special login URL</h2>
+        <h3 style="text-align: center;">
+            <a id="link" href="">Find out how this works</a>
+        </h3>
+        <input id="input" type="text" readOnly>
+        <button id="button">Copy to clipboard</button>
+    </div>
+
     <script>
         window.onload = function() {
             // Check if the user has dark mode enabled
@@ -21,40 +31,19 @@
             const code = urlParams.get('key');
             // If the code parameter is present, show a popup with its value
             if (!code) {
-                const errorDiv = document.createElement('div');
-                errorDiv.classList.add('error');
-                errorDiv.textContent = 'No API key given!';
-                document.body.appendChild(errorDiv);
+                document.getElementById('errorDiv').style.display = 'block';
             } else {
-                const popup = document.createElement('div');
-                popup.classList.add('popup');
-                const h2 = document.createElement('h2');
-                h2.textContent = 'Your special login URL';
-                popup.appendChild(h2);
-                const h3 = document.createElement('h3');
-                h3.style.textAlign = 'center';
-                const link = document.createElement('a');
-                link.href = 'https://github.com/Hamster45105/DuckAddressSend/wiki/Functions#special-login-url';
-                link.textContent = 'Find out how this works';
-                h3.appendChild(link);
-                popup.appendChild(h3);
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.value = 'https://hamster45105.github.io/DuckAddressSend/auth?key=' + code;
-                input.readOnly = true;
-                popup.appendChild(input);
-                const button = document.createElement('button');
-                button.textContent = 'Copy to clipboard';
-                button.addEventListener('click', function() {
-                    input.select();
+                document.getElementById('popup').style.display = 'block';
+                document.getElementById('link').href = 'https://github.com/Hamster45105/DuckAddressSend/wiki/Functions#special-login-url';
+                document.getElementById('input').value = 'https://hamster45105.github.io/DuckAddressSend/auth?key=' + code;
+                document.getElementById('button').addEventListener('click', function() {
+                    document.getElementById('input').select();
                     document.execCommand('copy');
-                    button.textContent = 'Copied!';
-                    button.style.backgroundColor = '#008000';
+                    this.textContent = 'Copied!';
+                    this.style.backgroundColor = '#008000';
                 });
-                popup.appendChild(button);
-                document.body.appendChild(popup);
             }
-        };
+        }
     </script>
 </body>
 </html>
