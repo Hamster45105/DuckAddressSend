@@ -33,10 +33,10 @@ To help with code, feel free to fork and create a pull request.
 
 Found a bug or issue? Open an issue with as much detail as possible.
 
-Just ❤️ the website? Give the repo a star!
+Just LOVE the website? Give the repo a star!
 
 > :warning: **Warning!!!** <br>
-Despite being a couple of pages of CSS, JavaScript and HTML, the formatting of the code and naming of things is quite a mess!
+The formatting of the code and naming of things is quite a mess!
 
 ## License 📜
 This repository is licenesed under the **MIT License**.
