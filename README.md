@@ -36,7 +36,7 @@ Found a bug or issue? Open an issue with as much detail as possible.
 Just LOVE the website? Give the repo a star!
 
 > :warning: **Warning!!!** <br>
-The formatting of the code and naming of things is quite a mess!
+The code is an absolute mess. One day I might make it look nice.
 
 ## License 📜
 This repository is licenesed under the **MIT License**.
