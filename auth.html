@@ -30,10 +30,6 @@
       const messageElement = document.getElementById("message");
       const buttonsElement = document.getElementById("buttons");
 
-      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        document.querySelectorAll("*").forEach(element => element.classList.toggle("dark-mode"));
-      }
-
       function redirect(imported) {
         window.location.href = imported === 'true' ? "./index.html?imported=true" : "./";
       }

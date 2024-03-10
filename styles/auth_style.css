@@ -36,17 +36,3 @@ button {
 button:hover {
     background-color: #0062cc;
 }
-
-/* Dark mode */
-body.dark-mode {
-    color: #fff;
-    background-color: #000;
-}
-
-button.dark-mode {
-    background-color: #fff;
-    color: #000;
-}
-button:hover.dark-mode {
-    background-color: #666;
-}

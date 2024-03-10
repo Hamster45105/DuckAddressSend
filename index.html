@@ -7,12 +7,6 @@
         <link rel="stylesheet" href="./styles/style.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
-    <header id="sticky-header">
-        <div class="toggle-btn">
-            <input type="checkbox" id="toggle" />
-            <label for="toggle"></label>
-          </div>
-    </header>
     <body>
         <div class="container">
             <h1>Send From Duck 🦆</h1>
@@ -263,12 +257,6 @@
                 document.getElementById("textbox1").value = "";
                 document.getElementById("textbox2").value = "";
 
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    document.getElementById("toggle").checked = true;
-                    toggleDarkMode();            
-                } else {
-                    document.getElementById("toggle").checked = false;
-                }
 
                 const urlParams = new URLSearchParams(window.location.search);
                 const resizeValue = urlParams.get('resize');
@@ -332,12 +320,6 @@
                     textbox1.rows = newNumLines;
                 }
             }
-            function toggleDarkMode() {
-                const elements = document.querySelectorAll("*");
-                elements.forEach(function(element) {
-                    element.classList.toggle("dark-mode");
-                });
-            }
 
         window.addEventListener("load", pageLoad);
 
@@ -373,12 +355,6 @@
             decreaseTextAreaSize();
         });
 
-        const toggleBtn = document.querySelector(".toggle-btn input[type='checkbox']");
-        const elements = document.querySelectorAll("*");
-
-        toggleBtn.addEventListener("change", function() {
-            toggleDarkMode();
-        });
         </script>
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         <script type="text/javascript">
