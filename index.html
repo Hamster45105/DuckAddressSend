@@ -313,12 +313,6 @@
 
         // Keyboard shortcuts
         document.addEventListener("keydown", function(event) {
-        if (event.ctrlKey && event.keyCode === 13) {
-            document.getElementById("textbox2").focus();
-        }
-        });
-        
-        document.addEventListener("keydown", function(event) {
             if (event.keyCode === 13 && !event.ctrlKey && !event.altKey && !event.shiftKey) {
                 if (errorPopup.style.display === "block") {
                     event.preventDefault();
