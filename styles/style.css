@@ -87,6 +87,29 @@ a:hover {
   text-decoration: underline;
 }
 
+.toast-success {
+  opacity: 0; 
+  transition: opacity 0.5s; 
+  position: fixed; 
+  bottom: 20px; 
+  right: 20px; 
+  background-color: #44c767; 
+  padding: 10px 20px; 
+  box-sizing: border-box; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  box-shadow: 0px 2px 15px rgba(0,0,0,0.1); 
+  border-radius: 15px;
+}
+
+.toast-success-message {
+  margin: 0; 
+  font-size: 18px; 
+  color: #fff; 
+  font-weight: 500;
+}
+
 /** Generate Address Popup **/
 
 #popup {
@@ -270,12 +293,7 @@ footer a:hover {
   cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
-  #importBanner {
-    right: 0;
-    bottom: 0;
-  }
-}
+
 
 @media screen and (max-width: 600px) {
   #starPopup {
