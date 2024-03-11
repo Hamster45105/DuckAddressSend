@@ -312,12 +312,15 @@ footer a:hover {
   }
 }
 
-#combinedText {
-  font-size: 20px;
+#combined-text {
   font-weight: bold;
   color: #333;
   margin-top: 20px;
   text-align: center;
+  font-size: 24px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
 }
 
 .container {

@@ -68,9 +68,7 @@
                     <button onclick="combineText()">Create Address!</button>
                 
 
-            <div style="display: flex; flex-direction: column; align-items: center;" hidden>
-                <p id="combinedText" style="font-size: 24px; font-weight: bold; margin-top: 20px; text-align: center;"></p>
-            </div>
+            <p id="combined-text"></p>
             <div id="action-buttons">
                 <button id="copy-button" type="button" onclick="copyToClipboard()" hidden>Copy to Clipboard</button>
                 <button id="mail-button" type="button" onclick="sendEmail()" hidden>Open in Mail</button>
@@ -124,11 +122,11 @@
                 copyButton.textContent = "Copy to Clipboard";
 
                 if (lines.length === 1) {
-                    document.getElementById("combinedText").innerHTML = result;
+                    document.getElementById("combined-text").innerHTML = result;
                 } else {
                     var resultLines = result.split(",");
                     var resultNewText = resultLines.join("\n");
-                    document.getElementById("combinedText").innerHTML = resultNewText;
+                    document.getElementById("combined-text").innerHTML = resultNewText;
                 }
 
                 if (!duckEmailRegex.test(textbox2Value)){
@@ -139,7 +137,7 @@
                 var combinedText = textbox1Parts[0] + "_at_" + textbox1Parts[1] + "_" + textbox2Value;
                 copyButton.style.backgroundColor = "#007bff";
                 copyButton.textContent = "Copy to Clipboard";
-                document.getElementById("combinedText").innerHTML = combinedText;
+                document.getElementById("combined-text").innerHTML = combinedText;
                 document.getElementById("copy-button").removeAttribute("hidden");
                 document.getElementById("mail-button").removeAttribute("hidden");
                 document.getElementById("loginLink").style.display = "none";
@@ -169,7 +167,7 @@
             }
 
             function openErrorPopup(errorMessage) {
-                document.getElementById("combinedText").innerHTML = "";
+                document.getElementById("combined-text").innerHTML = "";
                 document.getElementById("textbox2").blur();
                 document.getElementById("copy-button").setAttribute("hidden", true);
                 document.getElementById("mail-button").setAttribute("hidden", true);
