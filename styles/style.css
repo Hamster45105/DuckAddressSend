@@ -161,6 +161,11 @@ footer a:hover {
   color: #333;
 }
 
+#footer-version {
+  font-size: 1.2em; 
+  font-weight: bold;
+}
+
 /** Star Popup **/
 
 #star-popup {
